@@ -1,0 +1,4 @@
+/* styles/minimal.css */
+#app { max-width: 600px; margin: 20px auto; padding: 10px }
+#generate-btn { padding: 10px 20px; margin-top: 20px }
+.result { border: 1px solid #ddd; padding: 15px }
