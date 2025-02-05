@@ -1,0 +1,12 @@
+<body>
+    <script type="module">
+      import { getDailyFortune } from './scripts/fortune-core.js';
+      
+      // 示例测试
+      console.log("今日运势(示例1): ", getDailyFortune());
+      
+      // 模拟不同用户
+      navigator.userAgent = 'Mozilla/5.0 (iPhone)'; 
+      console.log("今日运势(示例2): ", getDailyFortune());
+    </script>
+  </body>

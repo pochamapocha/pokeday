@@ -1,22 +1,24 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PokeDay</title>
-    <link rel="stylesheet" href="./styles/minimal.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeDay</title>
+  <link rel="stylesheet" href="styles/minimal.css">
 </head>
 <body>
-    <div id="app">
-        <div class="result">
-            <h2 id="fortune-rank">-</h2>
-            <ul id="fortune-details"></ul>
-        </div>
-        <a href="https://pokemondb.net/pokedex/piplup"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/piplup.gif" alt="Piplup"></a>
-        <button id="generate-btn">My PokeDay!</button>
+  <div id="fortune-container">
+    <h2 id="fortune-level">Level</h2>
+    <div id="advice-section">
+      <p class="advice-item" data-type="wish">愿望：</p>
+      <p class="advice-item" data-type="travel">出行：</p>
+      <p class="advice-item" data-type="health">健康：</p>
     </div>
-    <script src="./scripts/core.js"></script>
+    <a href="https://pokemondb.net/pokedex/piplup"><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/piplup.gif" alt="Piplup"></a>
+    <button id="generate-btn" onclick="generateFortune()">My PokeDay!</button>
+  </div>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/fortune-core.js"></script>
 </body>
 </html>
 
