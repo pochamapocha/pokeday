@@ -1,7 +1,8 @@
 const domElements = {
     level: document.getElementById('fortune-level'),
     adviceItems: document.querySelectorAll('.advice-item'),
-    generateBtn: document.getElementById('generate-btn')
+    generateBtn: document.getElementById('generate-btn'),
+    pokemonImg: document.getElementById('pokemon-img')
 };
 
 function generateFortune() {
@@ -19,6 +20,7 @@ function generateFortune() {
                 const type = item.dataset.type;
                 item.textContent = `${type} : ${result.advice[type]}`;
             });
+            domElements.pokemonImg.src = `${result.pokemon.image}`;
         } catch (error) {
             console.error('生成失败： ', error);
             domElements.level.textContent = '出错啦';

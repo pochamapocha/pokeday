@@ -1,10 +1,8 @@
 // import { FORTUNE_LEVELS, ADVICE_TEMPLATES, THEORY_MAPPING, POKEMON_TYPE_MAPPING, getDayTheory } from '../traditional-mapping.js';
 import { generateBaseHash } from '../utils/hash-utils.js';
-import { getDayTheory } from '../utils/date-utils.js';
 import { FORTUNE_LEVELS } from '../config/fortune-levels.js';
 import { ADVICE_TEMPLATES } from '../config/advice-templates.js';
-import { THEORY_MAPPING } from '../config/theory-mappings.js';
-import { POKEMON_TYPE_MAPPING } from './pokemon-matcher.js';
+import { generateFortuneValue, generateFortunePokemonIdList, initPokemonIndex, findClosestPokemon} from './pokemon-matcher.js';
 
 /* 运势等级生成 */
 function calculateFortuneLevel(hashValue) {
@@ -28,43 +26,21 @@ function generateAdvice(level, category, hashValue) {
     return pool[index];
 }
 
-/* 确定运势宝可梦 */
-function generateFortuneValue(userHash) {
-    const base = userHash % 605 + 175; // 175-780
-    
-    return base;
-}
-
-function findClosestPokemon(targetValue, pokemonList) {
-    return pokemonList.reduce((closest, current) => {
-      const currentDiff = Math.abs(current.baseStats - targetValue);
-      const closestDiff = Math.abs(closest.baseStats - targetValue);
-      return currentDiff < closestDiff ? current : closest;
-    });
-}
 
 /* 运势+建议+宝可梦 - 全局函数 */
 window.getDailyFortune = function() {
     const baseHash = generateBaseHash();
     const level = calculateFortuneLevel(baseHash);
     
+    // 候选宝可梦id列表
+    const candidateIds = generateFortunePokemonIdList(baseHash);
+    // 建立列表索引
+    initPokemonIndex(candidateIds);
+    // 今日运势值
+    const targetValue = generateFortuneValue(baseHash);
+    // 确定宝可梦
+    const closestPokemon = findClosestPokemon(targetValue);
     
-    // 类型安全校验
-    function getMappedTypes(key, mapping) {
-        const result = mapping[key] || [];
-        return Array.isArray(result) ? result : [result];
-    }
-
-    const dayTheory = getDayTheory(new Date());
-    
-    // 加权合并（五行60% + 八卦40%）
-    const stemTypes = getMappedTypes(THEORY_MAPPING[dayTheory.stem], POKEMON_TYPE_MAPPING); // 获取天干->五行对应的宝可梦类型
-    const branchTypes = getMappedTypes(THEORY_MAPPING[dayTheory.branch], POKEMON_TYPE_MAPPING); // 获取地支->八卦对应的宝可梦类型
-    const combinedTypes = stemTypes.concat(branchTypes);
-    
-    // 确保至少有一个类型
-    const validTypes = combinedTypes.length > 0 ? combinedTypes : ['一般']; 
-    const specialType = validTypes[baseHash % validTypes.length];
 
     return{
         level: level,
@@ -74,7 +50,10 @@ window.getDailyFortune = function() {
             health: generateAdvice(level, 'health', baseHash)
         },
         // hash: baseHash //**用于调试
-        type: specialType,
-        value: generateFortuneValue(baseHash),
+        pokemon: {
+            id: closestPokemon.id,  // 宝可梦id，已转换为4位
+            stats: closestPokemon.stats,  // 宝可梦种族值
+            image: `https://jsd.cdn.zzko.cn/gh/pochamapocha/pokemon-images-cdn@latest/data/images/${closestPokemon.id}.png`
+        }
     };
 }
