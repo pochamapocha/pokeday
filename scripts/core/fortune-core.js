@@ -1,15 +1,30 @@
-// import { FORTUNE_LEVELS, ADVICE_TEMPLATES, THEORY_MAPPING, POKEMON_TYPE_MAPPING, getDayTheory } from '../traditional-mapping.js';
-import { generateBaseHash } from '../utils/hash-utils.js';
 import { FORTUNE_LEVELS } from '../config/fortune-levels.js';
 import { ADVICE_TEMPLATES } from '../config/advice-templates.js';
+import { generateBaseHash } from '../utils/hash-utils.js';
+import { getGanZhi } from '../utils/date-utils.js';
 import { generateFortuneValue, generateFortunePokemonIdList, initPokemonIndex, findClosestPokemon} from './pokemon-matcher.js';
 
 /* 运势等级生成 */
-function calculateFortuneLevel(hashValue) {
-    const thresholds = [850, 700, 550, 400, 250, 100, 0];
+function calculateFortuneLevel(dayGanzhi, hashValue) {
+    // 天干地支权重映射
+    const stemWeights =
+        { 甲: 30, 乙: 25, 丙: 20, 丁: 15, 戊: 10,
+            己: 5, 庚: 0, 辛: -5, 壬: -10, 癸: -15 };
+    const branchWeights =
+        { 子: 20, 丑: 15, 寅: 10, 卯: 5, 辰: 0, 巳: -5,
+            午: -10, 未: -15, 申: -20, 酉: -25, 戌: -30, 亥: -35 };
+
+    // 综合评分
+    const score = 
+        stemWeights[dayGanzhi.stem] * 0.4 + 
+        branchWeights[dayGanzhi.branch] * 0.4 + 
+        (hashValue % 100) * 0.2;
+
+    // 阈值划分
+    const thresholds = [85, 70, 55, 40, 25, 10];
 
     for(let i = 0; i < thresholds.length; i++){
-        if(hashValue >= thresholds[i]){
+        if(score >= thresholds[i]){
             return FORTUNE_LEVELS[i];
         }
     }
@@ -30,10 +45,11 @@ function generateAdvice(level, category, hashValue) {
 /* 运势+建议+宝可梦 - 全局函数 */
 window.getDailyFortune = function() {
     const baseHash = generateBaseHash();
-    const level = calculateFortuneLevel(baseHash);
+    const dayGanzhi = getGanZhi(new Date(), baseHash);
+    const level = calculateFortuneLevel(dayGanzhi, baseHash);
     
     // 候选宝可梦id列表
-    const candidateIds = generateFortunePokemonIdList(baseHash);
+    const candidateIds = generateFortunePokemonIdList(dayGanzhi, baseHash);
     // 建立列表索引
     initPokemonIndex(candidateIds);
     // 今日运势值

@@ -32,7 +32,7 @@ export function getGanZhi(date, hashValue) {
     const selectedBranch = terrestrialBranches[branchIndex];
 
     return { 
-        selectedStem,
-        selectedBranch
+        stem: selectedStem,
+        branch: selectedBranch
     };
 }

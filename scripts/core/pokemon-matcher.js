@@ -1,25 +1,21 @@
-import { getGanZhi } from '../utils/date-utils.js';
 import { THEORY_MAPPING } from '../config/theory-mappings.js';
 import { POKEMON_BAGUA_TYPE_MAPPING, POKEMON_TYPE_CN_EN_MAPPINGS } from '../config/pokemon-mappings.js';
 import { POKEMON_TYPES } from '../config/pokemon-types.js'
 import { POKEMON_STATS } from '../config/pokemon-stats.js'
 
 /* 确定宝可梦类型 */
-export function generateFortunePokemonIdList(baseHash) {
+export function generateFortunePokemonIdList(dayGanzhi, baseHash) {
     // 类型安全校验
     function getMappedTypes(key, mapping) {
         const result = mapping[key] || [];
         return Array.isArray(result) ? result : [result];
     }
 
-    // 根据日期确定天干地支
-    const dayTheory = getGanZhi(new Date(), baseHash);
-
     // 获取天干->五行对应的宝可梦类型
     // 获取地支->八卦对应的宝可梦类型
     // 合并数组
-    const stemTypes = getMappedTypes(THEORY_MAPPING[dayTheory.stem], POKEMON_BAGUA_TYPE_MAPPING);
-    const branchTypes = getMappedTypes(THEORY_MAPPING[dayTheory.branch], POKEMON_BAGUA_TYPE_MAPPING);
+    const stemTypes = getMappedTypes(THEORY_MAPPING[dayGanzhi.stem], POKEMON_BAGUA_TYPE_MAPPING);
+    const branchTypes = getMappedTypes(THEORY_MAPPING[dayGanzhi.branch], POKEMON_BAGUA_TYPE_MAPPING);
     const combinedTypes = stemTypes.concat(branchTypes);
 
     // 确保至少有一个类型
