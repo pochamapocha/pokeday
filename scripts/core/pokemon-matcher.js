@@ -1,4 +1,4 @@
-import { getDayTheory } from '../utils/date-utils.js';
+import { getGanZhi } from '../utils/date-utils.js';
 import { THEORY_MAPPING } from '../config/theory-mappings.js';
 import { POKEMON_BAGUA_TYPE_MAPPING, POKEMON_TYPE_CN_EN_MAPPINGS } from '../config/pokemon-mappings.js';
 import { POKEMON_TYPES } from '../config/pokemon-types.js'
@@ -13,7 +13,7 @@ export function generateFortunePokemonIdList(baseHash) {
     }
 
     // 根据日期确定天干地支
-    const dayTheory = getDayTheory(new Date());
+    const dayTheory = getGanZhi(new Date(), baseHash);
 
     // 获取天干->五行对应的宝可梦类型
     // 获取地支->八卦对应的宝可梦类型
