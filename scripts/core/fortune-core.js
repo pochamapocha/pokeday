@@ -1,5 +1,5 @@
 import { FORTUNE_LEVELS } from '../config/fortune-levels.js';
-import { ADVICE_TEMPLATES } from '../config/advice-templates.js';
+import { ADVICE_CATEGORIES, ADVICE_TEMPLATES, ADVICE_PLACEHOLDER, ADVICE_CATEGORIE_WEIGHTS, ADVICE_GANZHI_WEIGHTS} from '../config/advice-templates.js';
 import { generateBaseHash } from '../utils/hash-utils.js';
 import { getGanZhi } from '../utils/date-utils.js';
 import { generateFortuneValue, generateFortunePokemonIdList, initPokemonIndex, findClosestPokemon} from './pokemon-matcher.js';
@@ -32,13 +32,37 @@ function calculateFortuneLevel(dayGanzhi, hashValue) {
 }
 
 /* 建议生成 */
-function generateAdvice(level, category, hashValue) {
-    const pool = ADVICE_TEMPLATES[category][level] || [];
-    if(pool.length === 0) return '暂无建议';
+// 生成每个建议类目的运势等级
+function generateEachAdviceFortuneLevel(adviceCategory, dayGanzhi, hashValue) {
+    const stemWeight = ADVICE_GANZHI_WEIGHTS[dayGanzhi.stem][adviceCategory];
+    const branchWeight = ADVICE_GANZHI_WEIGHTS[dayGanzhi.branch][adviceCategory];
 
-    // 使用哈希后三位决定选择索引
-    const index = (hashValue % 1000) % pool.length;
-    return pool[index];
+    const score = 
+        stemWeight * ADVICE_CATEGORIE_WEIGHTS[adviceCategory].stem +
+        branchWeight * ADVICE_CATEGORIE_WEIGHTS[adviceCategory].branch +
+        (hashValue % 100 / 100) * ADVICE_CATEGORIE_WEIGHTS[adviceCategory].hash;
+
+    const thresholds = [0.85, 0.70, 0.55, 0.40, 0.25, 0.10];
+    for (let i = 0; i < thresholds.length; i++) {
+        if (score >= thresholds[i]) return FORTUNE_LEVELS[i];
+    }
+    return FORTUNE_LEVELS[FORTUNE_LEVELS.length - 1];
+}
+
+// 生成每个类目的建议
+function generateAdvice(adviceCategory, level, hashValue) {
+    const templates = ADVICE_TEMPLATES[adviceCategory][level];
+    const seed = (hashValue + adviceCategory.charCodeAt(0)) % templates.length;
+    let advice = templates[seed];
+
+    //替换建议模板中的占位符
+    for (const placeholder in ADVICE_PLACEHOLDER) {
+        const placeholderSeed = (hashValue + adviceCategory.charCodeAt(0)) % ADVICE_PLACEHOLDER[placeholder].length;
+        const replaceItem = ADVICE_PLACEHOLDER[placeholder][placeholderSeed]
+        advice = advice.replace(new RegExp(placeholder, 'g'), replaceItem);
+    }
+
+    return advice;
 }
 
 
@@ -47,6 +71,14 @@ window.getDailyFortune = function() {
     const baseHash = generateBaseHash();
     const dayGanzhi = getGanZhi(new Date(), baseHash);
     const level = calculateFortuneLevel(dayGanzhi, baseHash);
+
+    const dailyAdvice = {};
+
+    ADVICE_CATEGORIES.forEach(adviceCategory => {
+        const level = generateEachAdviceFortuneLevel(adviceCategory, dayGanzhi, baseHash)
+        const advice = generateAdvice(adviceCategory, level, baseHash);
+        dailyAdvice[adviceCategory] = advice;
+    });
     
     // 候选宝可梦id列表
     const candidateIds = generateFortunePokemonIdList(dayGanzhi, baseHash);
@@ -60,11 +92,7 @@ window.getDailyFortune = function() {
 
     return{
         level: level,
-        advice: {
-            wish: generateAdvice(level, 'wish', baseHash),
-            travel: generateAdvice(level, 'travel', baseHash),
-            health: generateAdvice(level, 'health', baseHash)
-        },
+        advice: dailyAdvice,
         // hash: baseHash //**用于调试
         pokemon: {
             id: closestPokemon.id,  // 宝可梦id，已转换为4位
