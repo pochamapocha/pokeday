@@ -1,5 +1,6 @@
 import { FORTUNE_LEVELS } from '../config/fortune-levels.js';
 import { ADVICE_CATEGORIES, ADVICE_TEMPLATES, ADVICE_PLACEHOLDER, ADVICE_CATEGORIE_WEIGHTS, ADVICE_GANZHI_WEIGHTS} from '../config/advice-templates.js';
+import { POKEMON_IMAGE_COUNTING } from '../config/pokemon-image-counting.js';
 import { generateBaseHash } from '../utils/hash-utils.js';
 import { getGanZhi } from '../utils/date-utils.js';
 import { generateFortuneValue, generateFortunePokemonIdList, initPokemonIndex, findClosestPokemon} from './pokemon-matcher.js';
@@ -88,6 +89,9 @@ window.getDailyFortune = function() {
     const targetValue = generateFortuneValue(baseHash);
     // 确定宝可梦
     const closestPokemon = findClosestPokemon(targetValue);
+
+    // 宝可梦图片选择，并转为四位数字
+    const imageIndex = String(baseHash % POKEMON_IMAGE_COUNTING[closestPokemon.id] + 1).padStart(4, '0');
     
 
     return{
@@ -97,7 +101,7 @@ window.getDailyFortune = function() {
         pokemon: {
             id: closestPokemon.id,  // 宝可梦id，已转换为4位
             stats: closestPokemon.stats,  // 宝可梦种族值
-            image: `https://jsd.cdn.zzko.cn/gh/pochamapocha/pokemon-images-cdn@latest/data/images/${closestPokemon.id}.png`
+            image: `https://cdn.jsdmirror.com/gh/pochamapocha/pokeimage-cdn@latest/data/images/v1/${closestPokemon.id}/${imageIndex}.png`
         }
     };
 }
