@@ -2,13 +2,22 @@ import { getDailyFortune } from "./core/fortune-core.js";
 
 window.getDailyFortune = getDailyFortune; // 控制台测试用
 
+window.addEventListener("DOMContentLoaded", () => {
+    const savedUsername = localStorage.getItem("username");
+    const savedBirthday = localStorage.getItem("birthday");
+
+    if (savedUsername) domElements.username.value = savedUsername;
+    if (savedBirthday) domElements.birthday.value = savedBirthday;
+})
+
 const domElements = {
     generateBtn: document.getElementById('generate-btn'),
     username: document.getElementById('username'),
     birthday: document.getElementById('birthday'),
     level: document.getElementById('fortune-level'),
     adviceContainer: document.getElementById('advice-container'),
-    pokemonImg: document.getElementById('pokemon-img')
+    pokemonImg: document.getElementById('pokemon-img'),
+    username_show: document.getElementById('username-show'),
 };
 
 domElements.generateBtn.addEventListener("click", () => {
@@ -19,8 +28,13 @@ domElements.generateBtn.addEventListener("click", () => {
     // 清空建议容器内容（确保每次更新时是清空的）
     domElements.adviceContainer.innerHTML = "";
 
-    const username = domElements.username.value || "匿名";
+    const username = domElements.username.value || "训练家";
     const birthday = domElements.birthday.value || "2000-01-01";
+
+    localStorage.setItem("username", username);
+    localStorage.setItem("birthday", birthday);
+
+    domElements.username_show.textContent = username;
 
     const result = getDailyFortune(username, birthday);
 
