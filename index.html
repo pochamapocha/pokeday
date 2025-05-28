@@ -8,14 +8,21 @@
 </head>
 <body>
   <div id="fortune-container">
-    <h2 id="fortune-level">Level</h2>
-    <div id="advice-container"></div>
+
+    <label>训练家名字：<input type="text" id="username"/></label><br />
+    <label>生日(YYYY-MM-DD)：<input type="text" id="birthday" /></label> <br />
     <img src="images/piplup.gif" alt="Piplup">
-    <img id="pokemon-img" src="images/piplup.gif" alt="Today Pokemon">
-    <button id="generate-btn" onclick="generateFortune()">My PokeDay!</button>
+    <button id="generate-btn">My PokeDay!</button>
+
+    <div id="fortune-section">
+      <h2 id="fortune-level">Level</h2>
+      <div id="advice-container"></div>
+      <img id="pokemon-img" src="images/piplup.gif" alt="Today Pokemon">
+    </div>
+    
   </div>
-  <script src="scripts/app.js"></script>
-  <script type="module" src="scripts/core/fortune-core.js"></script>
+  <script type="module" src="scripts/app.js"></script>
+  <!-- <script type="module" src="scripts/core/fortune-core.js"></script> -->
 </body>
 </html>
 

@@ -1,13 +1,20 @@
-/* 基础哈希生成 */
-export function generateBaseHash() {
-    // 日期种子（YYYYMMDDD）
-    const dateSeed = new Date().toISOString().slice(0,10).replace(/-/g,'');
+/**
+ * 将字符串和日期组合后生成可控 hash 值。
+ * @param {string} username - 用户名
+ * @param {string} birthday - 格式 'YYYY-MM-DD'
+ * @param {string} date - 当前日期 'YYYY-MM-DD'，可选
+ * @returns {number} - 稳定但有波动性的 hash 值
+ */
+export function generateBaseHash(username, birthday, date = null) {
+    const today = date || new Date().toISOString().slice(0, 10); // 默认今天
+    const baseString = `${username}::${birthday}::${today}`;
     
-    // 用户特征哈希（基于浏览器指纹）
-    const userHash = navigator.userAgent.split('').reduce(
-        (acc, char) => acc + char.charCodeAt(0), 0
-    );
+    let hash = 0;
 
-    const combined = (parseInt(dateSeed) * 127) ^ userHash;
-    return Math.abs(combined % 1000); // 返回0-999的整数
+    for (let i = 0; i < baseString.length; i++) {
+        const char = baseString.charCodeAt(i);
+        hash = (hash << 5) - hash + char;
+        hash |= 0; // 转为32位整数
+    }
+    return Math.abs(hash);
 }
