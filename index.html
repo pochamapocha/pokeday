@@ -7,17 +7,20 @@
   <link rel="stylesheet" href="styles/minimal.css">
 </head>
 <body>
+  <button id="edit-user-btn" class="top-right-button">我的</button>
+
   <div id="user-modal" class="modal hidden">
     <div class="modal-content">
-      <div>Hi! </div><div id="username-show">训练家</div>
       <label>名字：<input type="text" id="modal-username" /></label><br />
       <label>生日：<input type="date" id ="modal-birthday"></label><br />
       <button id="modal-confirm-btn">确认</button>
       <button id="modal-cancel-btn">跳过</button>
     </div>
   </div>
-
+  
+  
   <div id="fortune-container">
+    <div>Hi! </div><div id="username-show">训练家</div>
     <img src="images/piplup.gif" alt="Piplup">
     <button id="generate-btn">My PokeDay!</button>
 

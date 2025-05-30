@@ -1,9 +1,11 @@
 import { getDailyFortune } from "./core/fortune-core.js";
 
 const domElements = {
+    editUserBtn: document.getElementById("edit-user-btn"),
+
     modal: document.getElementById("user-modal"),
     modalUsername: document.getElementById("modal-username"),
-    modalBirthday: document.getElementById("modal-birhtday"),
+    modalBirthday: document.getElementById("modal-birthday"),
     modalConfirmBtn: document.getElementById("modal-confirm-btn"),
     modalCancelBtn: document.getElementById("modal-cancel-btn"),
 
@@ -18,44 +20,64 @@ const domElements = {
 window.getDailyFortune = getDailyFortune; // 控制台测试用
 
 window.addEventListener("DOMContentLoaded", () => {
+    domElements.username_show.innerHTML = getUsernameFromStorage();
+
     const savedUsername = localStorage.getItem("username");
     const savedBirthday = localStorage.getItem("birthday");
 
     if(!savedUsername || !savedBirthday) {
         domElements.modal.classList.remove("hidden");
     }
+
+    // 设置日期组件的初始值为1995年
+    domElements.modalBirthday.value = "1995-01-01";
 })
 
+domElements.editUserBtn.addEventListener("click", () => {
+    domElements.modal.classList.remove("hidden");
+
+    domElements.modalUsername.value = getUsernameFromStorage();
+    domElements.modalBirthday.value = getBirthdayFromStorage();
+})
+
+// modal confirm
 domElements.modalConfirmBtn.addEventListener("click", () => {
     const inputUsername = domElements.modalUsername.value || "训练家";
-    const inputBirthday = domElements.modalBirthday.value || "2000-01-01";
+    const inputBirthday = domElements.modalBirthday.value || "1995-01-01";
 
     localStorage.setItem("username", inputUsername);
     localStorage.setItem("birthday", inputBirthday);
 
-    modal.classList.add("hidden");
+    domElements.modal.classList.add("hidden");
+    domElements.username_show.innerHTML = getUsernameFromStorage();
+    
+    clearFortuneContent();
 });
 
+// modal cancel
 domElements.modalCancelBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
+   domElements.modal.classList.add("hidden");
 });
 
 domElements.generateBtn.addEventListener("click", () => {
+    generate();
+});
+
+function generate() {
     // 禁用按钮，防止重复点击
     domElements.generateBtn.disabled = true;
     domElements.generateBtn.textContent = 'loading...';
     
-    // 清空建议容器内容（确保每次更新时是清空的）
-    domElements.adviceContainer.innerHTML = "";
+    clearFortuneContent();
 
-    const username = localStorage.getItem("username") || "训练家";
-    const birthday = localStorage.getItem("birthday") || "2000-01-01";
+    // 更新用户名显示
+    domElements.username_show.innerHTML = getUsernameFromStorage();
 
-    localStorage.setItem("username", username);
-    localStorage.setItem("birthday", birthday);
+    // 从缓存获取用户名和生日
+    const username = getUsernameFromStorage();
+    const birthday = getBirthdayFromStorage();
 
-    domElements.username_show.textContent = username;
-
+    // 生成结果
     const result = getDailyFortune(username, birthday);
 
     // 模拟延迟加载
@@ -88,10 +110,25 @@ domElements.generateBtn.addEventListener("click", () => {
         domElements.generateBtn.disabled = false;
         domElements.generateBtn.textContent = 'My PokeDay!';
     }, 500); // 模拟0.5秒延迟
-});
+}
+
+function clearFortuneContent() {
+    domElements.level.textContent = "";
+    domElements.adviceContainer.innerHTML = "";
+    domElements.pokemonImg.src = "images/piplup.gif";  // 或显示默认图片
+    domElements.pokemonName.textContent = "";
+}
 
 // function init() {
 //     domElements.generateBtn.disabled = false;
 // }
 
 // init();
+
+function getUsernameFromStorage() {
+    return localStorage.getItem("username") || "训练家";
+}
+
+function getBirthdayFromStorage() {
+    return localStorage.getItem("birthday") || "1995-01-01";
+}
