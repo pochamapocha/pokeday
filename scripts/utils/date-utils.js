@@ -1,4 +1,6 @@
 export function getGanZhi(date, hashValue) {
+    date = date || new Date(); // 默认今天
+
     // 天干地支映射表
     const celestialStems = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
     const terrestrialBranches = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
@@ -15,24 +17,24 @@ export function getGanZhi(date, hashValue) {
     const dayStem = celestialStems[dayCycle % 10];
     const dayBranch = terrestrialBranches[dayCycle % 12];
 
-    // 年干支（公式：(year - 4) % 60）
-    const yearCycle = (y - 4) % 60;
-    const yearStem = celestialStems[yearCycle % 10];
-    const yearBranch = terrestrialBranches[yearCycle % 12];
+    // // 年干支（公式：(year - 4) % 60）
+    // const yearCycle = (y - 4) % 60;
+    // const yearStem = celestialStems[yearCycle % 10];
+    // const yearBranch = terrestrialBranches[yearCycle % 12];
 
-    // 月干支（基于年干支和节气简化计算）
-    const monthCycle = (yearCycle * 12 + m - 1) % 60;
-    const monthStem = celestialStems[monthCycle % 10];
-    const monthBranch = terrestrialBranches[monthCycle % 12];
+    // // 月干支（基于年干支和节气简化计算）
+    // const monthCycle = (yearCycle * 12 + m - 1) % 60;
+    // const monthStem = celestialStems[monthCycle % 10];
+    // const monthBranch = terrestrialBranches[monthCycle % 12];
 
-    // 哈希选择干支
-    const stemIndex = hashValue % celestialStems.length;
-    const branchIndex = (hashValue >> 4) % terrestrialBranches.length; // 高位取模
-    const selectedStem = celestialStems[stemIndex];
-    const selectedBranch = terrestrialBranches[branchIndex];
+    // // 哈希选择干支
+    // const stemIndex = hashValue % celestialStems.length;
+    // const branchIndex = (hashValue >> 4) % terrestrialBranches.length; // 高位取模
+    // const selectedStem = celestialStems[stemIndex];
+    // const selectedBranch = terrestrialBranches[branchIndex];
 
     return { 
-        stem: selectedStem,
-        branch: selectedBranch
+        stem: dayStem,
+        branch: dayBranch,
     };
 }

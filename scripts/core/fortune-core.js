@@ -107,7 +107,7 @@ function generateCopingAdvice(pokemonId, category) {
  * @param {string} date - 默认使用今天
  * @returns {Object} - 包含整体运势等级、每项建议、宝可梦信息等
  */
-export function getDailyFortune(username, birthday, date = new Date()) {
+export function getDailyFortune(username, birthday, date = null) {
     const baseHash = generateBaseHash(username, birthday, date);
     const ganzhi = getGanZhi(date, baseHash);
 
