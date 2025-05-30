@@ -1,3 +1,4 @@
+// 种族值
 export const POKEMON_STATS = {
   "1": 318,
   "2": 405,

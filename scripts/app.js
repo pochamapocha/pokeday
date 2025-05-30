@@ -17,6 +17,7 @@ const domElements = {
     level: document.getElementById('fortune-level'),
     adviceContainer: document.getElementById('advice-container'),
     pokemonImg: document.getElementById('pokemon-img'),
+    pokemonName: document.getElementById('pokemon-name'),
     username_show: document.getElementById('username-show'),
 };
 
@@ -45,13 +46,20 @@ domElements.generateBtn.addEventListener("click", () => {
 
             for(const category in result.advice) {
                 const advice = result.advice[category];
+
                 const adviceElement = document.createElement("div");
                 adviceElement.className = "advice-item";
                 adviceElement.innerHTML = `<strong>${category}</strong> (${advice.level}): ${advice.text}`;
                 domElements.adviceContainer.appendChild(adviceElement);
+
+                const pokemonMoveElement = document.createElement("div");
+                pokemonMoveElement.className = "pokemon-move";
+                pokemonMoveElement.innerHTML = `${advice.pokemon_move}`;
+                domElements.adviceContainer.appendChild(pokemonMoveElement);
             }
 
             domElements.pokemonImg.src = result.pokemon.image;
+            domElements.pokemonName.innerHTML = result.pokemon.name;
         } catch (error) {
             console.error('生成失败： ', error);
             domElements.level.textContent = '出错啦';
