@@ -1,4 +1,4 @@
-export const MOVES = {
+export const POKEMON_MOVES = {
   "1": {
     "en": "pound",
     "zh": "拍击"
