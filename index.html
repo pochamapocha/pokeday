@@ -7,15 +7,21 @@
   <link rel="stylesheet" href="styles/minimal.css">
 </head>
 <body>
-  <div id="fortune-container">
+  <div id="user-modal" class="modal hidden">
+    <div class="modal-content">
+      <div>Hi! </div><div id="username-show">训练家</div>
+      <label>名字：<input type="text" id="modal-username" /></label><br />
+      <label>生日：<input type="date" id ="modal-birthday"></label><br />
+      <button id="modal-confirm-btn">确认</button>
+      <button id="modal-cancel-btn">跳过</button>
+    </div>
+  </div>
 
-    <label>训练家名字：<input type="text" id="username"/></label><br />
-    <label>生日(YYYY-MM-DD)：<input type="text" id="birthday" /></label> <br />
+  <div id="fortune-container">
     <img src="images/piplup.gif" alt="Piplup">
     <button id="generate-btn">My PokeDay!</button>
 
     <div id="fortune-section">
-      <div>Hi! </div><div id="username-show">训练家</div>
       <h2 id="fortune-level">Level</h2>
       <div id="advice-container"></div>
       <img id="pokemon-img" src="images/piplup.gif" alt="Today Pokemon">
@@ -23,6 +29,7 @@
     </div>
     
   </div>
+
   <script type="module" src="scripts/app.js"></script>
   <!-- <script type="module" src="scripts/core/fortune-core.js"></script> -->
 </body>

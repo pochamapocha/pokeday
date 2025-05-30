@@ -1,25 +1,44 @@
 import { getDailyFortune } from "./core/fortune-core.js";
 
-window.getDailyFortune = getDailyFortune; // 控制台测试用
-
-window.addEventListener("DOMContentLoaded", () => {
-    const savedUsername = localStorage.getItem("username");
-    const savedBirthday = localStorage.getItem("birthday");
-
-    if (savedUsername) domElements.username.value = savedUsername;
-    if (savedBirthday) domElements.birthday.value = savedBirthday;
-})
-
 const domElements = {
+    modal: document.getElementById("user-modal"),
+    modalUsername: document.getElementById("modal-username"),
+    modalBirthday: document.getElementById("modal-birhtday"),
+    modalConfirmBtn: document.getElementById("modal-confirm-btn"),
+    modalCancelBtn: document.getElementById("modal-cancel-btn"),
+
     generateBtn: document.getElementById('generate-btn'),
-    username: document.getElementById('username'),
-    birthday: document.getElementById('birthday'),
     level: document.getElementById('fortune-level'),
     adviceContainer: document.getElementById('advice-container'),
     pokemonImg: document.getElementById('pokemon-img'),
     pokemonName: document.getElementById('pokemon-name'),
     username_show: document.getElementById('username-show'),
 };
+
+window.getDailyFortune = getDailyFortune; // 控制台测试用
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedUsername = localStorage.getItem("username");
+    const savedBirthday = localStorage.getItem("birthday");
+
+    if(!savedUsername || !savedBirthday) {
+        domElements.modal.classList.remove("hidden");
+    }
+})
+
+domElements.modalConfirmBtn.addEventListener("click", () => {
+    const inputUsername = domElements.modalUsername.value || "训练家";
+    const inputBirthday = domElements.modalBirthday.value || "2000-01-01";
+
+    localStorage.setItem("username", inputUsername);
+    localStorage.setItem("birthday", inputBirthday);
+
+    modal.classList.add("hidden");
+});
+
+domElements.modalCancelBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+});
 
 domElements.generateBtn.addEventListener("click", () => {
     // 禁用按钮，防止重复点击
@@ -29,8 +48,8 @@ domElements.generateBtn.addEventListener("click", () => {
     // 清空建议容器内容（确保每次更新时是清空的）
     domElements.adviceContainer.innerHTML = "";
 
-    const username = domElements.username.value || "训练家";
-    const birthday = domElements.birthday.value || "2000-01-01";
+    const username = localStorage.getItem("username") || "训练家";
+    const birthday = localStorage.getItem("birthday") || "2000-01-01";
 
     localStorage.setItem("username", username);
     localStorage.setItem("birthday", birthday);

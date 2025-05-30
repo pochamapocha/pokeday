@@ -1,4 +1,8 @@
 /* 极简基础样式 */
+.hidden {
+  display: none;
+}
+
 #fortune-container {
     max-width: 600px;
     margin: 20px auto;
