@@ -4,10 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PokeDay</title>
-  <link rel="stylesheet" href="styles/minimal.css">
+  <!-- <link rel="stylesheet" href="styles/minimal.css"> -->
+  <link rel="stylesheet" href="styles/base.css">  
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/fortune.css">
+  <link rel="stylesheet" href="styles/pokemon.css">
+  <link rel="stylesheet" href="styles/mobile.css">
+
 </head>
 <body>
-  <button id="edit-user-btn" class="top-right-button">我的</button>
+  <div class="page-wrapper">
+    <div class="screen-container">
+  
+      <div class="box-row">
+        <div class="pokemon-image-box">
+          <img id="pokemon-img" class="pokemon-img" src="images/piplup.gif" alt="Today Pokemon">
+        </div>
+        <div class="setting-box">
+          <button id="setting-btn" class="button-setting"></button>
+        </div>
+      </div>
+
+  
+      <div class="pokemon-name-box">
+        <div id="pokemon-name" class="pokemon-name-text"></div>
+      </div>
+
+      <div class="box-row">
+        <div class="fortune-level-box">
+          <div id="fortune-level" class="fortune-text"></div>
+        </div>
+
+        <div class="button-generate-box">
+          <button id="generate-btn" class="button-generate"></button>
+        </div>
+      </div>
+
+      <div class="category-box">
+        <div class="category-box-content">
+            <div class="category-box-row">
+            <div class="category-advice-box">
+              <div class="category-advice-text">工作：xxxxxx</div>
+            </div>
+            <div class="pokemon-move-box">
+              <div class="pokemon-move-text"></div>
+            </div>
+          </div>
+
+          <div class="category-box-row">
+            <div class="category-advice-box">
+              <div class="category-advice-text"></div>
+            </div>
+            <div class="pokemon-move-box">
+              <div class="pokemon-move-text"></div>
+            </div>
+          </div>
+
+          <div class="category-box-row">
+            <div class="category-advice-box">
+              <div class="category-advice-text"></div>
+            </div>
+            <div class="pokemon-move-box">
+              <div class="pokemon-move-text"></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-field">
+        <label for="modal-username">名字：</label>
+        <input type="text" id="modal-username" />
+      </div>
+      <div class="modal-field">
+        <label for="modal-birthday">生日：</label>
+        <input type="date" id="modal-birthday" />
+      </div>
+      <div class="modal-buttons">
+        <button id="modal-confirm-btn">确认</button>
+        <button id="modal-cancel-btn">跳过</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- <button id="edit-user-btn" class="top-right-button">我的</button>
 
   <div id="user-modal" class="modal hidden">
     <div class="modal-content">
@@ -16,22 +106,31 @@
       <button id="modal-confirm-btn">确认</button>
       <button id="modal-cancel-btn">跳过</button>
     </div>
+  </div> -->
+
+  <!-- <img src="images/piplup.gif" alt="Piplup"> -->
+
+  <!-- <div class="pokemon-box">
+    <div class="pokemon-name-background">
+      <div id="pokemon-name" class="pokemon-name-text"></div>
+    </div>
   </div>
-  
+
+  <div class="pokemon-image-background">
+    <img id="pokemon-img" src="images/piplup.gif" alt="Today Pokemon">
+  </div>
   
   <div id="fortune-container">
     <div>Hi! </div><div id="username-show">训练家</div>
-    <img src="images/piplup.gif" alt="Piplup">
+    
     <button id="generate-btn">My PokeDay!</button>
 
     <div id="fortune-section">
       <h2 id="fortune-level">Level</h2>
       <div id="advice-container"></div>
-      <img id="pokemon-img" src="images/piplup.gif" alt="Today Pokemon">
-      <div id="pokemon-name"></div>
     </div>
     
-  </div>
+  </div> -->
 
   <script type="module" src="scripts/app.js"></script>
   <!-- <script type="module" src="scripts/core/fortune-core.js"></script> -->

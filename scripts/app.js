@@ -1,7 +1,7 @@
 import { getDailyFortune } from "./core/fortune-core.js";
 
 const domElements = {
-    editUserBtn: document.getElementById("edit-user-btn"),
+    editUserBtn: document.getElementById("setting-btn"),
 
     modal: document.getElementById("user-modal"),
     modalUsername: document.getElementById("modal-username"),

@@ -1,0 +1,6 @@
+/* styles/mobile.css */
+@media (max-width: 768px) {
+    .page-wrapper {
+        width: 100vw;
+    }
+}
