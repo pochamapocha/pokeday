@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "qiji";
+    src: url("../fonts/qiji.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "ipix";
+    src: url("../fonts/ipix_12px.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Muyao";
+    src: url("../fonts/Muyao-Softbrush.ttf") format("truetype");
+}

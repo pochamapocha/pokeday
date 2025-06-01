@@ -20,9 +20,6 @@
     background-image: url('../images/ui/background.png');
     background-size:cover;
     background-position: center;
-    
-    /* gap: 1rem; */
-    /* padding-top: 3vh; */
 }
 
 .box-row {
@@ -32,7 +29,6 @@
     align-items: center;
     width: 100%;
     padding: 0;
-    /* gap: 1rem; */
 }
 
 .pokemon-image-box {
@@ -41,7 +37,7 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 28vh;
+    height: 25vh;
     aspect-ratio: 3 / 2; 
 
     position: relative;
