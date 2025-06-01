@@ -1,1 +1,2 @@
-export const POKEMON_IMAGE_PATH = "images/pokemons";  // 用于主图
+const BASE_PATH = window.location.pathname.replace(/\/[^/]*$/, '');
+export const POKEMON_IMAGE_PATH = `${BASE_PATH}/images/pokemons`;
