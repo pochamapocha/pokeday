@@ -1,6 +1,7 @@
 import { POKEMON_IMAGE_PATH } from '../config/image-path.js'
 import { FORTUNE_LEVELS } from '../config/fortune-levels.js';
-import { ADVICE_CATEGORIES, ADVICE_TEMPLATES, ADVICE_PLACEHOLDER, ADVICE_CATEGORIE_WEIGHTS, ADVICE_GANZHI_WEIGHTS} from '../config/advice-templates.js';
+import { ADVICE_CATEGORIES, ADVICE_PLACEHOLDER, ADVICE_CATEGORIE_WEIGHTS, ADVICE_GANZHI_WEIGHTS} from '../config/advice-templates.js';
+import { ADVICE_TEMPLATES_TEXT } from '../config/advice-templates-text.js';
 import { POKEMON_IMAGE_COUNTING } from '../config/pokemon-image-counting.js';
 import { generateBaseHash } from '../utils/hash-utils.js';
 import { getGanZhi } from '../utils/date-utils.js';
@@ -14,7 +15,7 @@ import { selectFortunePokemon, generatePokemonMoveList} from './pokemon-matcher.
  * @returns {string}
  */
 function generateAdvice(category, level, hashValue) {
-    const templates = ADVICE_TEMPLATES[category]?.[level] || ["今天似乎风平浪静。"];
+    const templates = ADVICE_TEMPLATES_TEXT[category]?.[level] || ["今天似乎风平浪静。"];
     const seed = (hashValue + category.charCodeAt(0)) % templates.length;
     let advice = templates[seed];
 
