@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const savedBirthday = localStorage.getItem("birthday");
 
     if(!savedUsername || !savedBirthday) {
-        domElements.modal.classList.remove("hidden");
+        hideModal();
     }
 
     // 设置日期组件的初始值为1995年
@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 domElements.editUserBtn.addEventListener("click", () => {
-    domElements.modal.classList.remove("hidden");
+    showModal();
 
     domElements.modalUsername.value = getUsernameFromStorage();
     domElements.modalBirthday.value = getBirthdayFromStorage();
@@ -46,10 +46,10 @@ domElements.modalConfirmBtn.addEventListener("click", () => {
     const inputUsername = domElements.modalUsername.value || "训练家";
     const inputBirthday = domElements.modalBirthday.value || "1995-01-01";
 
-    localStorage.setItem("username", inputUsername);
-    localStorage.setItem("birthday", inputBirthday);
+    saveUserInfo(inputUsername, inputBirthday);
 
-    domElements.modal.classList.add("hidden");
+
+    hideModal()
     // domElements.username_show.innerHTML = getUsernameFromStorage();
     
     clearFortuneContent();
@@ -57,7 +57,7 @@ domElements.modalConfirmBtn.addEventListener("click", () => {
 
 // modal cancel
 domElements.modalCancelBtn.addEventListener("click", () => {
-   domElements.modal.classList.add("hidden");
+   hideModal()
 });
 
 domElements.generateBtn.addEventListener("click", () => {
@@ -159,6 +159,11 @@ function clearFortuneContent() {
 
 // init();
 
+function saveUserInfo(username, birthday) {
+    localStorage.setItem("username", username);
+    localStorage.setItem("birthday", birthday);
+}
+
 function getUsernameFromStorage() {
     return localStorage.getItem("username") || "训练家";
 }
@@ -166,3 +171,26 @@ function getUsernameFromStorage() {
 function getBirthdayFromStorage() {
     return localStorage.getItem("birthday") || "1995-01-01";
 }
+
+function showModal() {
+    domElements.modal.classList.remove("hidden");
+}
+
+function hideModal() {
+    domElements.modal.classList.add("hidden");
+}
+
+/** web页面显示的时候处理用的，不好看，后面再处理吧 */
+function updateScale() {
+  const container = document.querySelector('.screen-container');
+  const content = document.querySelector('.content-layer');
+  const containerWidth = container.offsetWidth;
+
+  // 设计宽度为 713.94px
+  const scale = containerWidth / 713.94;
+  content.style.setProperty('--scale-factor', scale);
+}
+
+// 初始 & 每次窗口变化时更新缩放
+window.addEventListener('load', updateScale);
+window.addEventListener('resize', updateScale);

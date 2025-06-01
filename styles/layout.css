@@ -1,25 +1,39 @@
 /* styles/layout.css */
 
 .page-wrapper {
-    width: 420px;
-    margin:0 auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    width: 100vw;
+    height: calc(100vw / 0.4372);
+    position: relative;
+    overflow: hidden;
 }
 
 .screen-container {
-    flex: 1;
+    background-image: url('../images/ui/background.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
     position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1081px;
+    margin: 0 auto;
+}
+
+.content-layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform-origin: top left;
+    /* transform: scale(var(--scale-factor)); */
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
-    background-image: url('../images/ui/background.png');
-    background-size:cover;
-    background-position: center;
 }
 
 .box-row {
@@ -37,18 +51,18 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 35vh;
+    width: 100%;
     aspect-ratio: 3 / 2; 
 
     position: relative;
     align-self: flex-start;
-    margin-left: 8%;
+    margin-left: 5%;
 }
 
 .setting-box {
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 20px;
 }
 
 .pokemon-name-box {
@@ -57,7 +71,7 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 6vh;
+    width: 38vw;
     aspect-ratio: 3/1;
 
     position: relative;
@@ -90,19 +104,19 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 45vh;
-    aspect-ratio: 0.9839/1;
+    width: 80%;
+    aspect-ratio: 1/1.6712;
 
     position: relative;
-    margin-top: -0.5vh;
+    margin-top: 0;
 }
 
 .category-box-content {
     position: relative;
 
     align-self: flex-start;
-    margin-top: 12%;
-    margin-right: 2vw;
+    margin-top: 22%;
+    margin-right: 1%;
 }
 
 .category-box-row {
@@ -133,7 +147,8 @@
 
     height: 4vh;
     aspect-ratio: 2.035/1;
+    margin-right: 2vw;
 
     position: relative;
-    flex: 1.7;
+    flex: 1.6;
 }
