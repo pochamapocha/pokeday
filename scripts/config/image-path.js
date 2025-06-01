@@ -1,0 +1,1 @@
+export const POKEMON_IMAGE_PATH = "/images/pokemons";  // 用于主图

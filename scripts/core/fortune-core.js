@@ -1,3 +1,4 @@
+import { POKEMON_IMAGE_PATH } from '../config/image-path.js'
 import { FORTUNE_LEVELS } from '../config/fortune-levels.js';
 import { ADVICE_CATEGORIES, ADVICE_TEMPLATES, ADVICE_PLACEHOLDER, ADVICE_GANZHI_WEIGHTS} from '../config/advice-templates.js';
 import { POKEMON_IMAGE_COUNTING } from '../config/pokemon-image-counting.js';
@@ -70,7 +71,7 @@ export function getDailyFortune(username, birthday, date = null) {
         pokemon: {
             id: chosenPokemon.id,  // 宝可梦id，已转换为4位
             name: chosenPokemon.name,  // 宝可梦中文名
-            image: `https://cdn.jsdmirror.com/gh/pochamapocha/pokeimage-cdn@latest/data/images/v1/${pokemonIdForImage}/${imageIndex}.webp`
+            image: `${POKEMON_IMAGE_PATH}/${pokemonIdForImage}/${imageIndex}.webp`,
         },
     };
 }
