@@ -1,6 +1,7 @@
 @font-face {
     font-family: "qiji";
-    src: url("../fonts/qiji.ttf") format("truetype");
+    src: url("../fonts/qiji.ttf") format("truetype"),
+         url("../fonts/qiji.woff2") format("woff2");
 }
 
 @font-face {
