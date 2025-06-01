@@ -70,7 +70,7 @@ export function getDailyFortune(username, birthday, date = null) {
         pokemon: {
             id: chosenPokemon.id,  // 宝可梦id，已转换为4位
             name: chosenPokemon.name,  // 宝可梦中文名
-            image: `https://cdn.jsdmirror.com/gh/pochamapocha/pokeimage-cdn@latest/data/images/v1/${pokemonIdForImage}/${imageIndex}.png`
+            image: `https://cdn.jsdmirror.com/gh/pochamapocha/pokeimage-cdn@latest/data/images/v1/${pokemonIdForImage}/${imageIndex}.webp`
         },
     };
 }
