@@ -15,13 +15,7 @@ const domElements = {
     pokemonName: document.getElementById('pokemon-name'),
     // username_show: document.getElementById('username-show'),
 
-    categoryText1: document.getElementById("category-text-1"),
-    categoryText2: document.getElementById("category-text-2"),
-    categoryText3: document.getElementById("category-text-3"),
-
-    pokemonMove1: document.getElementById("pokemon-move-1"),
-    pokemonMove2: document.getElementById("pokemon-move-2"),
-    pokemonMove3: document.getElementById("pokemon-move-3"),
+    categoryAdviceContainer: document.getElementById('category-advice-container'),
 };
 
 window.getDailyFortune = getDailyFortune; // 控制台测试用
@@ -90,33 +84,57 @@ function generate() {
     // 模拟延迟加载
     setTimeout(() => {
         try {
-            domElements.level.textContent = `${result.level}`;
-
-            const advice = result.advice;
-            domElements.categoryText1.innerHTML = `<strong>工作</strong> (${advice['工作'].level}): ${advice['工作'].text}`;
-            domElements.categoryText2.innerHTML = `<strong>游戏</strong> (${advice['游戏'].level}): ${advice['游戏'].text}`;
-            domElements.categoryText3.innerHTML = `<strong>恋爱</strong> (${advice['恋爱'].level}): ${advice['恋爱'].text}`;
-
-            domElements.pokemonMove1.innerHTML = `<strong>${advice['工作'].pokemon_move}</string>`;
-            domElements.pokemonMove2.innerHTML = `<strong>${advice['游戏'].pokemon_move}</string>`;
-            domElements.pokemonMove3.innerHTML = `<strong>${advice['恋爱'].pokemon_move}</string>`;
-
-            // for(const category in result.advice) {
-            //     const advice = result.advice[category];
-
-            //     const adviceElement = document.createElement("div");
-            //     adviceElement.className = "advice-item";
-            //     adviceElement.innerHTML = `<strong>${category}</strong> (${advice.level}): ${advice.text}`;
-            //     domElements.adviceContainer.appendChild(adviceElement);
-
-            //     const pokemonMoveElement = document.createElement("div");
-            //     pokemonMoveElement.className = "pokemon-move";
-            //     pokemonMoveElement.innerHTML = `${advice.pokemon_move}`;
-            //     domElements.adviceContainer.appendChild(pokemonMoveElement);
-            // }
-
             domElements.pokemonImg.src = result.pokemon.image;
+            domElements.level.textContent = `${result.level}`;
             domElements.pokemonName.innerHTML = result.pokemon.name;
+
+            for(const category in result.advice) {
+                const advice = result.advice[category];
+
+                // column 1
+                const categoryFortuneLevel = document.createElement("div");
+                categoryFortuneLevel.className = "category-fortune-level";
+
+                const categoryFortuneLevelText = document.createElement("div");
+                categoryFortuneLevelText.className = "category-fortune-level-text";
+                categoryFortuneLevelText.innerHTML = `${advice.level}`;
+
+                categoryFortuneLevel.appendChild(categoryFortuneLevelText);
+
+                // column 2
+                const categoryAdviceMain = document.createElement("div");
+                categoryAdviceMain.className = "category-advice-main";
+
+                const categoryAdviceTitleText = document.createElement("div");
+                categoryAdviceTitleText.className = "category-advice-title-text";
+                categoryAdviceTitleText.innerHTML = `「 ${category} 」`;
+
+                const categoryAdviceContentText = document.createElement("div");
+                categoryAdviceContentText.className = "category-advice-content-text";
+                categoryAdviceContentText.innerHTML = `${advice.text}`;
+
+                categoryAdviceMain.appendChild(categoryAdviceTitleText);
+                categoryAdviceMain.appendChild(categoryAdviceContentText);
+
+                // column 3
+                const pokemonMove = document.createElement("div");
+                pokemonMove.className = "pokemon-move";
+
+                const pokemonMoveText = document.createElement("div");
+                pokemonMoveText.className = "pokemon-move-text";
+                pokemonMoveText.innerHTML = `${advice.pokemon_move}`;
+
+                pokemonMove.appendChild(pokemonMoveText);
+
+                // parent div
+                const categoryBoxRow = document.createElement("div");
+                categoryBoxRow.className = "category-box-row";
+                categoryBoxRow.appendChild(categoryFortuneLevel);
+                categoryBoxRow.appendChild(categoryAdviceMain);
+                categoryBoxRow.appendChild(pokemonMove);
+
+                domElements.categoryAdviceContainer.appendChild(categoryBoxRow);
+            }
         } catch (error) {
             console.error('生成失败： ', error);
             domElements.level.textContent = '出错啦';
@@ -130,17 +148,9 @@ function generate() {
 
 function clearFortuneContent() {
     domElements.level.textContent = "";
-    // domElements.adviceContainer.innerHTML = "";
+    domElements.categoryAdviceContainer.innerHTML = "";
     domElements.pokemonImg.src = "images/piplup.gif";  // 或显示默认图片
     domElements.pokemonName.textContent = "";
-
-    domElements.categoryText1.innerHTML = "";
-    domElements.categoryText2.innerHTML = "";
-    domElements.categoryText3.innerHTML = "";
-
-    domElements.pokemonMove1.innerHTML = "";
-    domElements.pokemonMove2.innerHTML = "";
-    domElements.pokemonMove3.innerHTML = "";
 }
 
 // function init() {

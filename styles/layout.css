@@ -37,21 +37,18 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 25vh;
+    height: 35vh;
     aspect-ratio: 3 / 2; 
 
     position: relative;
     align-self: flex-start;
     margin-left: 8%;
-    flex: 4.5;
 }
 
 .setting-box {
-    position: relative;
-    flex: 1;
-
-    align-self: flex-start;
-    margin-top: 1%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .pokemon-name-box {
@@ -93,8 +90,8 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 48vh;
-    aspect-ratio: 1/1.228395;
+    height: 45vh;
+    aspect-ratio: 0.9839/1;
 
     position: relative;
     margin-top: -0.5vh;
@@ -104,8 +101,7 @@
     position: relative;
 
     align-self: flex-start;
-    margin-top: 20%;
-    margin-left: 0.1vw;
+    margin-top: 12%;
     margin-right: 2vw;
 }
 
@@ -115,16 +111,21 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 0 2vh 2vw;
-    gap: 1rem;
+    padding: 0 0 2vh 0;
+    gap: 0.1rem;
 }
 
-.category-advice-box {
+.category-fortune-level {
     position: relative;
-    flex: 4;
+    flex: 1.2;
 }
 
-.pokemon-move-box {
+.category-advice-main {
+    position: relative;
+    flex: 3;
+}
+
+.pokemon-move {
     background-image: url('../images/ui/pokemon-move-name-background.png');
     background-size: contain;
     background-position: center;
@@ -134,5 +135,5 @@
     aspect-ratio: 2.035/1;
 
     position: relative;
-    flex: 1;
+    flex: 1.7;
 }

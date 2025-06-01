@@ -4,8 +4,8 @@
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
-  width: 45%;
-  height: auto;
+  height: 93%;
+  width: auto;
 }
 
 .pokemon-name-text {
@@ -16,7 +16,9 @@
     height: 6vh;
 
     font-family: "Muyao", "Noto Sans SC", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+
+    color: rgb(114, 83, 46);
 }
 
 .fortune-level-text {
@@ -34,8 +36,31 @@
     text-align: center;
 }
 
-.category-advice-text {
+.category-fortune-level-text {
     position: relative;
+
+    font-family: "qiji", "Noto Sans SC", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.category-advice-title-text {
+    position: relative;
+
+    font-family: "ipix", "Noto Sans SC", sans-serif;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-align: left;
+
+    margin-bottom: 0.8vh;
+}
+
+.category-advice-content-text {
+    position: relative;
+
+    font-family: "ipix", "Noto Sans SC", sans-serif;
+    font-size: 1rem;
+    text-align: left;
 }
 
 .pokemon-move-text {
@@ -44,6 +69,10 @@
     align-items: center;       /* 垂直居中 */
 
     height: 3vh;
+    margin-top: 0.5vh;
+
+    font-family: "Muyao", "Noto Sans SC", sans-serif;
+    font-size: 1.4rem;
 }
 
 .button-generate {
