@@ -1,4 +1,4 @@
-export const POKEMON_MOVES = {
+export const MOVES = {
   "1": {
     "en": "pound",
     "zh": "拍击"
@@ -3305,195 +3305,195 @@ export const POKEMON_MOVES = {
   },
   "827": {
     "en": "dire-claw",
-    "zh": ""
+    "zh": "克命爪"
   },
   "828": {
     "en": "psyshield-bash",
-    "zh": ""
+    "zh": "屏障猛攻"
   },
   "829": {
     "en": "power-shift",
-    "zh": ""
+    "zh": "力量转换"
   },
   "830": {
     "en": "stone-axe",
-    "zh": ""
+    "zh": "岩斧"
   },
   "831": {
     "en": "springtide-storm",
-    "zh": ""
+    "zh": "阳春风暴"
   },
   "832": {
     "en": "mystical-power",
-    "zh": ""
+    "zh": "神秘之力"
   },
   "833": {
     "en": "raging-fury",
-    "zh": ""
+    "zh": "大愤慨"
   },
   "834": {
     "en": "wave-crash",
-    "zh": ""
+    "zh": "波动冲"
   },
   "835": {
     "en": "chloroblast",
-    "zh": ""
+    "zh": "叶绿爆震"
   },
   "836": {
     "en": "mountain-gale",
-    "zh": ""
+    "zh": "冰山风"
   },
   "837": {
     "en": "victory-dance",
-    "zh": ""
+    "zh": "胜利之舞"
   },
   "838": {
     "en": "headlong-rush",
-    "zh": ""
+    "zh": "突飞猛扑"
   },
   "839": {
     "en": "barb-barrage",
-    "zh": ""
+    "zh": "毒千针"
   },
   "840": {
     "en": "esper-wing",
-    "zh": ""
+    "zh": "气场之翼"
   },
   "841": {
     "en": "bitter-malice",
-    "zh": ""
+    "zh": "冤冤相报"
   },
   "842": {
     "en": "shelter",
-    "zh": ""
+    "zh": "闭关"
   },
   "843": {
     "en": "triple-arrows",
-    "zh": ""
+    "zh": "三连箭"
   },
   "844": {
     "en": "infernal-parade",
-    "zh": ""
+    "zh": "群魔乱舞"
   },
   "845": {
     "en": "ceaseless-edge",
-    "zh": ""
+    "zh": "秘剑・千重涛"
   },
   "846": {
     "en": "bleakwind-storm",
-    "zh": ""
+    "zh": "枯叶风暴"
   },
   "847": {
     "en": "wildbolt-storm",
-    "zh": ""
+    "zh": "鸣雷风暴"
   },
   "848": {
     "en": "sandsear-storm",
-    "zh": ""
+    "zh": "热沙风暴"
   },
   "849": {
     "en": "lunar-blessing",
-    "zh": ""
+    "zh": "新月祈祷"
   },
   "850": {
     "en": "take-heart",
-    "zh": ""
+    "zh": "勇气填充"
   },
   "851": {
     "en": "tera-blast",
-    "zh": ""
+    "zh": "太晶爆发"
   },
   "852": {
     "en": "silk-trap",
-    "zh": ""
+    "zh": "线阱"
   },
   "853": {
     "en": "axe-kick",
-    "zh": ""
+    "zh": "下压踢"
   },
   "854": {
     "en": "last-respects",
-    "zh": ""
+    "zh": "扫墓"
   },
   "855": {
     "en": "lumina-crash",
-    "zh": ""
+    "zh": "琉光冲激"
   },
   "856": {
     "en": "order-up",
-    "zh": ""
+    "zh": "上菜"
   },
   "857": {
     "en": "jet-punch",
-    "zh": ""
+    "zh": "喷射拳"
   },
   "858": {
     "en": "spicy-extract",
-    "zh": ""
+    "zh": "辣椒精华"
   },
   "859": {
     "en": "spin-out",
-    "zh": ""
+    "zh": "疾速转轮"
   },
   "860": {
     "en": "population-bomb",
-    "zh": ""
+    "zh": "鼠数儿"
   },
   "861": {
     "en": "ice-spinner",
-    "zh": ""
+    "zh": "冰旋"
   },
   "862": {
     "en": "glaive-rush",
-    "zh": ""
+    "zh": "巨剑突击"
   },
   "863": {
     "en": "revival-blessing",
-    "zh": ""
+    "zh": "复生祈祷"
   },
   "864": {
     "en": "salt-cure",
-    "zh": ""
+    "zh": "盐腌"
   },
   "865": {
     "en": "triple-dive",
-    "zh": ""
+    "zh": "三连钻"
   },
   "866": {
     "en": "mortal-spin",
-    "zh": ""
+    "zh": "晶光转转"
   },
   "867": {
     "en": "doodle",
-    "zh": ""
+    "zh": "描绘"
   },
   "868": {
     "en": "fillet-away",
-    "zh": ""
+    "zh": "甩肉"
   },
   "869": {
     "en": "kowtow-cleave",
-    "zh": ""
+    "zh": "仆刀"
   },
   "870": {
     "en": "flower-trick",
-    "zh": ""
+    "zh": "千变万花"
   },
   "871": {
     "en": "torch-song",
-    "zh": ""
+    "zh": "闪焰高歌"
   },
   "872": {
     "en": "aqua-step",
-    "zh": ""
+    "zh": "流水旋舞"
   },
   "873": {
     "en": "raging-bull",
-    "zh": ""
+    "zh": "怒牛"
   },
   "874": {
     "en": "make-it-rain",
-    "zh": ""
+    "zh": "淘金潮"
   },
   "875": {
     "en": "psyblade",
@@ -3505,115 +3505,115 @@ export const POKEMON_MOVES = {
   },
   "877": {
     "en": "ruination",
-    "zh": ""
+    "zh": "大灾难"
   },
   "878": {
     "en": "collision-course",
-    "zh": ""
+    "zh": "全开猛撞"
   },
   "879": {
     "en": "electro-drift",
-    "zh": ""
+    "zh": "闪电猛冲"
   },
   "880": {
     "en": "shed-tail",
-    "zh": ""
+    "zh": "断尾"
   },
   "881": {
     "en": "chilly-reception",
-    "zh": ""
+    "zh": "冷笑话"
   },
   "882": {
     "en": "tidy-up",
-    "zh": ""
+    "zh": "大扫除"
   },
   "883": {
     "en": "snowscape",
-    "zh": ""
+    "zh": "雪景"
   },
   "884": {
     "en": "pounce",
-    "zh": ""
+    "zh": "虫扑"
   },
   "885": {
     "en": "trailblaze",
-    "zh": ""
+    "zh": "起草"
   },
   "886": {
     "en": "chilling-water",
-    "zh": ""
+    "zh": "泼冷水"
   },
   "887": {
     "en": "hyper-drill",
-    "zh": ""
+    "zh": "强力钻"
   },
   "888": {
     "en": "twin-beam",
-    "zh": ""
+    "zh": "双光束"
   },
   "889": {
     "en": "rage-fist",
-    "zh": ""
+    "zh": "愤怒之拳"
   },
   "890": {
     "en": "armor-cannon",
-    "zh": ""
+    "zh": "铠农炮"
   },
   "891": {
     "en": "bitter-blade",
-    "zh": ""
+    "zh": "悔念剑"
   },
   "892": {
     "en": "double-shock",
-    "zh": ""
+    "zh": "电光双击"
   },
   "893": {
     "en": "gigaton-hammer",
-    "zh": ""
+    "zh": "巨力锤"
   },
   "894": {
     "en": "comeuppance",
-    "zh": ""
+    "zh": "复仇"
   },
   "895": {
     "en": "aqua-cutter",
-    "zh": ""
+    "zh": "水波刀"
   },
   "896": {
     "en": "blazing-torque",
-    "zh": ""
+    "zh": "灼热暴冲"
   },
   "897": {
     "en": "wicked-torque",
-    "zh": ""
+    "zh": "黑暗暴冲"
   },
   "898": {
     "en": "noxious-torque",
-    "zh": ""
+    "zh": "剧毒暴冲"
   },
   "899": {
     "en": "combat-torque",
-    "zh": ""
+    "zh": "格斗暴冲"
   },
   "900": {
     "en": "magical-torque",
-    "zh": ""
+    "zh": "魔法暴冲"
   },
   "901": {
     "en": "blood-moon",
-    "zh": ""
+    "zh": "血月"
   },
   "902": {
     "en": "matcha-gotcha",
-    "zh": ""
+    "zh": "刷刷茶炮"
   },
   "903": {
     "en": "syrup-bomb",
-    "zh": ""
+    "zh": "糖浆炸弹"
   },
   "904": {
     "en": "ivy-cudgel",
-    "zh": ""
+    "zh": "棘藤棒"
   },
   "905": {
     "en": "electro-shot",
