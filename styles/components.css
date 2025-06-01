@@ -75,6 +75,14 @@
     font-size: 1.4rem;
 }
 
+.fortune-good {
+    color: #B22222;
+}
+
+.fortune-bad {
+    color: black;
+}
+
 .button-generate {
     background-image: url('../images/ui/button-pokeday-default.png');
     background-size: contain;

@@ -1,4 +1,5 @@
 import { getDailyFortune } from "./core/fortune-core.js";
+import { GOOD_FORTUNE_LEVELS, BAD_FORTUNE_LEVELS } from "./config/fortune-levels.js";
 
 const domElements = {
     editUserBtn: document.getElementById("setting-btn"),
@@ -88,6 +89,11 @@ function generate() {
             domElements.level.textContent = `${result.level}`;
             domElements.pokemonName.innerHTML = result.pokemon.name;
 
+            domElements.level.classList.add(
+                GOOD_FORTUNE_LEVELS.includes(result.level) ? "fortune-good" : "fortune-bad"
+            );
+
+
             for(const category in result.advice) {
                 const advice = result.advice[category];
 
@@ -95,8 +101,12 @@ function generate() {
                 const categoryFortuneLevel = document.createElement("div");
                 categoryFortuneLevel.className = "category-fortune-level";
 
+
                 const categoryFortuneLevelText = document.createElement("div");
                 categoryFortuneLevelText.className = "category-fortune-level-text";
+                categoryFortuneLevelText.classList.add(
+                    GOOD_FORTUNE_LEVELS.includes(advice.level) ? "fortune-good" : "fortune-bad"
+                );
                 categoryFortuneLevelText.innerHTML = `${advice.level}`;
 
                 categoryFortuneLevel.appendChild(categoryFortuneLevelText);
