@@ -15,6 +15,13 @@ html, body {
     padding: 0;
 }
 
+button,
+input,
+textarea {
+    -webkit-tap-highlight-color: transparent; /* 去除蓝色点击高亮 */
+    outline: none;                            /* 去除点击后的轮廓 */
+}
+
 img {
     display: block;
     max-width: 100%;
@@ -24,6 +31,10 @@ button {
     font-family: inherit;
     cursor: pointer;
     border: none;
+    outline: none;
+}
+
+button:focus {
     outline: none;
 }
 

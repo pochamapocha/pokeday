@@ -30366,7 +30366,7 @@ export const POKEMON_NAME_MOVES = {
   },
   "312": {
     "en": "minun",
-    "zh": "負电拍拍",
+    "zh": "负电拍拍",
     "moves": [
       5,
       9,
