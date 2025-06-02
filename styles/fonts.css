@@ -1,20 +1,18 @@
 @font-face {
     font-family: "qiji";
-    src: url("../fonts/qiji.woff2") format("woff2"), 
-         url("../fonts/qiji.ttf") format("truetype");
-    font-display: swap;
+    src: url("../fonts/qiji-subset.woff2") format("woff2");
+    font-display: block; /* 在字体加载完成前不显示内容 之前使用swap*/ 
 }
 
 @font-face {
     font-family: "ipix";
     src: url("../fonts/ipix_12px.woff2") format("woff2"),
          url("../fonts/ipix_12px.ttf") format("truetype");
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
     font-family: "Muyao";
-    src: url("../fonts/Muyao-Softbrush.woff2") format("woff2"),
-         url("../fonts/Muyao-Softbrush.ttf") format("truetype");
-    font-display: swap;
+    src: url("../fonts/Muyao-Softbrush-subset.woff2") format("woff2");
+    font-display: block;
 }
