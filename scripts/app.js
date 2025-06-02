@@ -161,13 +161,16 @@ function generate() {
             domElements.level.textContent = '出错啦';
         }
 
-        domElements.loadingScreen.classList.add("hidden"); // 结束遮罩
-        domElements.categoryBox.classList.remove("hidden");
-        domElements.mainContent.style.display = "block";
+        document.fonts.ready.then(() => {
+            domElements.loadingScreen.classList.add("hidden"); // 结束遮罩
+            domElements.categoryBox.classList.remove("hidden");
+            domElements.mainContent.style.display = "block";
 
-        // 恢复按钮状态
-        domElements.generateBtn.disabled = false;
-        domElements.generateBtn.textContent = 'My PokeDay!';
+            // 恢复按钮状态
+            domElements.generateBtn.disabled = false;
+            domElements.generateBtn.textContent = 'My PokeDay!';
+        })
+
     }, 500); // 模拟0.5秒延迟
 }
 
@@ -221,10 +224,12 @@ window.addEventListener('load', () => {
     updateScale(); // 初始 & 每次窗口变化时更新缩放
 
     // 所有资源加载后移除loading遮罩
-    if (domElements.loadingScreen) {
-        domElements.loadingScreen.classList.add("hidden");
-        domElements.mainContent.style.display = "block";
+    document.fonts.ready.then(() => {
+        if (domElements.loadingScreen) {
+            domElements.loadingScreen.classList.add("hidden");
+            domElements.mainContent.style.display = "block";
     }
+    })
 });
 
 

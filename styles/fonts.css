@@ -7,10 +7,14 @@
 
 @font-face {
     font-family: "ipix";
-    src: url("../fonts/ipix_12px.ttf") format("truetype");
+    src: url("../fonts/ipix_12px.woff2") format("woff2"),
+         url("../fonts/ipix_12px.ttf") format("truetype");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Muyao";
-    src: url("../fonts/Muyao-Softbrush.ttf") format("truetype");
+    src: url("../fonts/Muyao-Softbrush.woff2") format("woff2"),
+         url("../fonts/Muyao-Softbrush.ttf") format("truetype");
+    font-display: swap;
 }
