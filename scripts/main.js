@@ -54,7 +54,6 @@ domElements.modalConfirmBtn.addEventListener("click", () => {
 
     saveUserInfo(inputUsername, inputBirthday);
 
-
     hideModal()
     showUsername();
     
@@ -109,7 +108,12 @@ function fetchFortuneResult() {
 }
 
 function renderFortuneResult(result) {
+    domElements.pokemonImg.setAttribute("loading", "lazy");
+    domElements.pokemonImg.onerror = function () {
+        domElements.pokemonImg.src = 'images/piplup.webp'; // 默认图片
+    };
     domElements.pokemonImg.src = result.pokemon.image;
+    
     domElements.level.textContent = `${result.level}`;
     domElements.pokemonName.innerHTML = result.pokemon.name;
 
