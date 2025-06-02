@@ -14,7 +14,7 @@ const domElements = {
     level: document.getElementById('fortune-level'),
     pokemonImg: document.getElementById('pokemon-img'),
     pokemonName: document.getElementById('pokemon-name'),
-    // username_show: document.getElementById('username-show'),
+    username_show: document.getElementById('username-show'),
 
     categoryAdviceContainer: document.getElementById('category-advice-container'),
 };
@@ -22,17 +22,19 @@ const domElements = {
 window.getDailyFortune = getDailyFortune; // 控制台测试用
 
 window.addEventListener("DOMContentLoaded", () => {
-    // domElements.username_show.innerHTML = getUsernameFromStorage();
+    showUsername();
 
     const savedUsername = localStorage.getItem("username");
     const savedBirthday = localStorage.getItem("birthday");
 
-    if(!savedUsername || !savedBirthday) {
-        hideModal();
+    if(!savedUsername || !savedBirthday || savedUsername == '训练家') {
+        // 设置日期组件的初始值为1995年
+        domElements.modalBirthday.value = "1995-01-01";
+
+        showModal();
     }
 
-    // 设置日期组件的初始值为1995年
-    domElements.modalBirthday.value = "1995-01-01";
+
 })
 
 domElements.editUserBtn.addEventListener("click", () => {
@@ -51,7 +53,7 @@ domElements.modalConfirmBtn.addEventListener("click", () => {
 
 
     hideModal()
-    // domElements.username_show.innerHTML = getUsernameFromStorage();
+    showUsername();
     
     clearFortuneContent();
 });
@@ -72,8 +74,7 @@ function generate() {
     
     clearFortuneContent();
 
-    // 更新用户名显示
-    // domElements.username_show.innerHTML = getUsernameFromStorage();
+    showUsername();
 
     // 从缓存获取用户名和生日
     const username = getUsernameFromStorage();
@@ -167,11 +168,10 @@ function clearFortuneContent() {
     domElements.pokemonName.textContent = "";
 }
 
-// function init() {
-//     domElements.generateBtn.disabled = false;
-// }
-
-// init();
+function showUsername() {
+    const username = getUsernameFromStorage();
+    domElements.username_show.textContent = `你好，${username}！`;
+}
 
 function saveUserInfo(username, birthday) {
     localStorage.setItem("username", username);

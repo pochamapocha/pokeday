@@ -8,12 +8,36 @@
     width: auto;
 }
 
+.welcome-text {
+    display: -webkit-box;                 /* 启用多行裁切布局 */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;               /* 最多显示2行 */
+    line-clamp: 2;                       /* 加标准属性，防警告 */
+    overflow: hidden;                    /* 裁掉多余内容 */
+
+    white-space: normal;                 /* 允许换行 */
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+    height: 2.2em;                       /* 控制高度（两行高度） */
+    line-height: 1.1em;                  /* 根据字体大小微调 */
+    max-height: 2.2em;                   /* 避免撑大格子 */
+
+    text-align: left;
+    font-family: "ipix", "Noto Sans SC", sans-serif;
+    font-size: 1rem;
+    color: rgb(114, 83, 46);
+}
+
+
+
 .pokemon-name-text {
     display: flex;
     justify-content: center;   /* 水平居中 */
     align-items: center;       /* 垂直居中 */
 
-    height: 6vh;
+    /* width: 100vw; */
+    margin-top: 6%;
 
     font-family: "Muyao", "Noto Sans SC", sans-serif;
     font-size: 1.7rem;

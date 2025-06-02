@@ -39,10 +39,10 @@
 .box-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     width: 100%;
-    padding: 0;
+    padding-left: 4.5%;
 }
 
 .pokemon-image-box {
@@ -66,17 +66,32 @@
     z-index: 9999;
 }
 
+.welcome-box {
+    position: relative;
+
+    margin-left: 7%;
+    margin-right: 7%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 35%;
+    max-width: 35%;
+    flex-shrink: 0;
+}
+
 .pokemon-name-box {
     background-image: url('../images/ui/pokemon-name-background.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
-    width: 38vw;
+    width: 40%;
+    max-width: 40%;
     aspect-ratio: 3/1;
-
+    flex-shrink: 0;
     position: relative;
-    margin-left: 40%;
 }
 
 .fortune-level-box {
