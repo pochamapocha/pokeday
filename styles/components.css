@@ -1,4 +1,19 @@
 /* styles/pokemon.css */
+
+.loading-img {
+    width: 160px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.loading-text {
+    color: #dee9e0;
+    font-family: "ipix", "Noto Sans SC", sans-serif;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-align: left;
+}
+
 .pokemon-img {
     position: absolute;
     top:50%;

@@ -2,6 +2,7 @@ import { getDailyFortune } from "./core/fortune-core.js";
 import { GOOD_FORTUNE_LEVELS, BAD_FORTUNE_LEVELS } from "./config/fortune-levels.js";
 
 const domElements = {
+    loadingScreen: document.getElementById("initial-loading"),
     editUserBtn: document.getElementById("setting-btn"),
 
     modal: document.getElementById("modal"),
@@ -205,6 +206,15 @@ function updateScale() {
   content.style.setProperty('--scale-factor', scale);
 }
 
-// 初始 & 每次窗口变化时更新缩放
-window.addEventListener('load', updateScale);
+
+window.addEventListener('load', () => {
+    updateScale(); // 初始 & 每次窗口变化时更新缩放
+
+    // 所有资源加载后移除loading遮罩
+    if (domElements.loadingScreen) {
+        domElements.loadingScreen.style.display = "none";
+    }
+});
+
+
 window.addEventListener('resize', updateScale);
