@@ -117,24 +117,25 @@
     position: relative;
 }
 
+.button-generate-box {
+    position: relative;
+    flex: 1;
+    margin-left: 6vw;
+}
+
 .fortune-level-box {
     background-image: url('../images/ui/fortune-level-background.webp');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 12vh;
+    height: 10vh;
     aspect-ratio: 1.786/1;
 
     position: relative;
-    flex: 1;
-    margin-left: 5vw;
-}
-
-.button-generate-box {
-    position: relative;
-    flex: 1;
-    margin-left: 1vw;
+    flex: 2;
+    margin-left: -12vw;
+    margin-top: 1vh;
 }
 
 .category-box {
@@ -154,7 +155,7 @@
     position: relative;
 
     align-self: flex-start;
-    margin-top: 22%;
+    margin-top: 20%;
     margin-right: 1%;
 }
 

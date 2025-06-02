@@ -18,7 +18,7 @@ const domElements = {
     pokemonName: document.getElementById('pokemon-name'),
     username_show: document.getElementById('username-show'),
 
-    categoryBox: document.getElementById('category-box'),
+    lazyHide: document.querySelectorAll('.lazy-hide'),
     categoryAdviceContainer: document.getElementById('category-advice-container'),
 };
 
@@ -159,8 +159,9 @@ function renderFortuneResult(result) {
         categoryBoxRow.appendChild(moveBox);
         domElements.categoryAdviceContainer.appendChild(categoryBoxRow);
     }
-
-    domElements.categoryBox.classList.remove("hidden");
+    domElements.lazyHide.forEach(element => {
+        element.classList.remove('hidden');
+    });
 }
 
 function clearFortuneContent() {
@@ -168,7 +169,9 @@ function clearFortuneContent() {
     domElements.categoryAdviceContainer.innerHTML = "";
     domElements.pokemonImg.src = "";  // 或显示默认图片
     domElements.pokemonName.textContent = "";
-    domElements.categoryBox.classList.add("hidden");
+    domElements.lazyHide.forEach(element => {
+        element.classList.add('hidden');
+    });
 }
 
 function showUsername() {

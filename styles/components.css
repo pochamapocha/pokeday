@@ -65,10 +65,10 @@
 
     height: 12vh;
     margin-left: -2vw;
-    margin-top: 1vh;
+    margin-top: -0.5vh;
 
     font-family: "qiji", "Noto Sans SC", sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: bold;
     text-align: center;
 }
@@ -132,7 +132,7 @@
     outline: none;
     padding: 0;
     
-    height: 8vh;
+    width: 40vw;
     aspect-ratio: 1.56/1;
 
     cursor: pointer;
