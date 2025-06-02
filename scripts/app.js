@@ -17,6 +17,7 @@ const domElements = {
     pokemonName: document.getElementById('pokemon-name'),
     username_show: document.getElementById('username-show'),
 
+    categoryBox: document.getElementById('category-box'),
     categoryAdviceContainer: document.getElementById('category-advice-container'),
 };
 
@@ -74,6 +75,8 @@ function generate() {
     domElements.generateBtn.textContent = 'loading...';
     
     clearFortuneContent();
+
+    domElements.loadingScreen.classList.remove("hidden");
 
     showUsername();
 
@@ -156,6 +159,9 @@ function generate() {
             domElements.level.textContent = '出错啦';
         }
 
+        domElements.loadingScreen.classList.add("hidden"); // 结束遮罩
+        domElements.categoryBox.classList.remove("hidden");
+
         // 恢复按钮状态
         domElements.generateBtn.disabled = false;
         domElements.generateBtn.textContent = 'My PokeDay!';
@@ -165,8 +171,9 @@ function generate() {
 function clearFortuneContent() {
     domElements.level.textContent = "";
     domElements.categoryAdviceContainer.innerHTML = "";
-    domElements.pokemonImg.src = "images/piplup.gif";  // 或显示默认图片
+    domElements.pokemonImg.src = "";  // 或显示默认图片
     domElements.pokemonName.textContent = "";
+    domElements.categoryBox.classList.add("hidden");
 }
 
 function showUsername() {
@@ -212,7 +219,8 @@ window.addEventListener('load', () => {
 
     // 所有资源加载后移除loading遮罩
     if (domElements.loadingScreen) {
-        domElements.loadingScreen.style.display = "none";
+        domElements.loadingScreen.classList.add("hidden");
+        // domElements.loadingScreen.style.display = "none";
     }
 });
 
