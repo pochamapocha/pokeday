@@ -71,107 +71,96 @@ domElements.generateBtn.addEventListener("click", () => {
 });
 
 function generate() {
-    // 禁用按钮，防止重复点击
-    domElements.generateBtn.disabled = true;
-    domElements.generateBtn.textContent = 'loading...';
-    
+    setLoading(true);
     clearFortuneContent();
-
-    domElements.loadingScreen.classList.remove("hidden");
-    domElements.mainContent.style.display = "none";
-
     showUsername();
 
-    // 从缓存获取用户名和生日
-    const username = getUsernameFromStorage();
-    const birthday = getBirthdayFromStorage();
-
-    // 生成结果
-    const result = getDailyFortune(username, birthday);
-
-    // 模拟延迟加载
     setTimeout(() => {
         try {
-            domElements.pokemonImg.src = result.pokemon.image;
-            domElements.level.textContent = `${result.level}`;
-            domElements.pokemonName.innerHTML = result.pokemon.name;
-
-            // 移除旧的状态 class
-            domElements.level.classList.remove("fortune-good", "fortune-bad");
-            domElements.level.classList.add(
-                GOOD_FORTUNE_LEVELS.includes(result.level) ? "fortune-good" : "fortune-bad"
-            );
-
-
-            for(const category in result.advice) {
-                const advice = result.advice[category];
-
-                // column 1
-                const categoryFortuneLevel = document.createElement("div");
-                categoryFortuneLevel.className = "category-fortune-level";
-
-
-                const categoryFortuneLevelText = document.createElement("div");
-                categoryFortuneLevelText.className = "category-fortune-level-text";
-                // 移除旧的状态 class
-                categoryFortuneLevelText.classList.remove("fortune-good", "fortune-bad");
-                categoryFortuneLevelText.classList.add(
-                    GOOD_FORTUNE_LEVELS.includes(advice.level) ? "fortune-good" : "fortune-bad"
-                );
-                categoryFortuneLevelText.innerHTML = `${advice.level}`;
-
-                categoryFortuneLevel.appendChild(categoryFortuneLevelText);
-
-                // column 2
-                const categoryAdviceMain = document.createElement("div");
-                categoryAdviceMain.className = "category-advice-main";
-
-                const categoryAdviceTitleText = document.createElement("div");
-                categoryAdviceTitleText.className = "category-advice-title-text";
-                categoryAdviceTitleText.innerHTML = `「 ${category} 」`;
-
-                const categoryAdviceContentText = document.createElement("div");
-                categoryAdviceContentText.className = "category-advice-content-text";
-                categoryAdviceContentText.innerHTML = `${advice.text}`;
-
-                categoryAdviceMain.appendChild(categoryAdviceTitleText);
-                categoryAdviceMain.appendChild(categoryAdviceContentText);
-
-                // column 3
-                const pokemonMove = document.createElement("div");
-                pokemonMove.className = "pokemon-move";
-
-                const pokemonMoveText = document.createElement("div");
-                pokemonMoveText.className = "pokemon-move-text";
-                pokemonMoveText.innerHTML = `${advice.pokemon_move}`;
-
-                pokemonMove.appendChild(pokemonMoveText);
-
-                // parent div
-                const categoryBoxRow = document.createElement("div");
-                categoryBoxRow.className = "category-box-row";
-                categoryBoxRow.appendChild(categoryFortuneLevel);
-                categoryBoxRow.appendChild(categoryAdviceMain);
-                categoryBoxRow.appendChild(pokemonMove);
-
-                domElements.categoryAdviceContainer.appendChild(categoryBoxRow);
-            }
+            const result = fetchFortuneResult();
+            renderFortuneResult(result);
         } catch (error) {
-            console.error('生成失败： ', error);
+            console.error("生成失败：", error);
             domElements.level.textContent = '出错啦';
+        } finally {
+            setLoading(false);
         }
-
-        document.fonts.ready.then(() => {
-            domElements.loadingScreen.classList.add("hidden"); // 结束遮罩
-            domElements.categoryBox.classList.remove("hidden");
-            domElements.mainContent.style.display = "block";
-
-            // 恢复按钮状态
-            domElements.generateBtn.disabled = false;
-            domElements.generateBtn.textContent = 'My PokeDay!';
-        })
-
     }, 500); // 模拟0.5秒延迟
+}
+
+function setLoading(isLoading) {
+    if (isLoading) {
+        domElements.generateBtn.disabled = true;
+        domElements.generateBtn.textContent = 'loading...';
+        domElements.loadingScreen.classList.remove("hidden");
+        domElements.mainContent.style.display = "none";
+    } else {
+        domElements.generateBtn.disabled = false;
+        domElements.generateBtn.textContent = 'My PokeDay!';
+        domElements.loadingScreen.classList.add("hidden");
+        domElements.mainContent.style.display = "block";
+    }
+}
+
+function fetchFortuneResult() {
+    const username = getUsernameFromStorage();
+    const birthday = getBirthdayFromStorage();
+    return getDailyFortune(username, birthday);
+}
+
+function renderFortuneResult(result) {
+    domElements.pokemonImg.src = result.pokemon.image;
+    domElements.level.textContent = `${result.level}`;
+    domElements.pokemonName.innerHTML = result.pokemon.name;
+
+    domElements.level.classList.remove("fortune-good", "fortune-bad");
+    domElements.level.classList.add(
+        GOOD_FORTUNE_LEVELS.includes(result.level) ? "fortune-good" : "fortune-bad"
+    );
+
+    for(const category in result.advice) {
+        const advice = result.advice[category];
+
+        const categoryBoxRow = document.createElement("div");
+        categoryBoxRow.className = "category-box-row";
+
+        const levelEl = document.createElement("div");
+        levelEl.className = "category-fortune-level";
+
+        const levelText = document.createElement("div");
+        levelText.className = "category-fortune-level-text";
+        levelText.classList.remove("fortune-good", "fortune-bad");
+        levelText.classList.add(
+            GOOD_FORTUNE_LEVELS.includes(advice.level) ? "fortune-good" : "fortune-bad"
+        );
+        levelText.innerHTML = `${advice.level}`;
+        levelEl.appendChild(levelText);
+
+        const adviceMain = document.createElement("div");
+        adviceMain.className = "category-advice-main";
+        const title = document.createElement("div");
+        title.className = "category-advice-title-text";
+        title.innerHTML = `「 ${category} 」`;
+        const content = document.createElement("div");
+        content.className = "category-advice-content-text";
+        content.innerHTML = `${advice.text}`;
+        adviceMain.appendChild(title);
+        adviceMain.appendChild(content);
+
+        const moveBox = document.createElement("div");
+        moveBox.className = "pokemon-move";
+        const moveText = document.createElement("div");
+        moveText.className = "pokemon-move-text";
+        moveText.innerHTML = `${advice.pokemon_move}`;
+        moveBox.appendChild(moveText);
+
+        categoryBoxRow.appendChild(levelEl);
+        categoryBoxRow.appendChild(adviceMain);
+        categoryBoxRow.appendChild(moveBox);
+        domElements.categoryAdviceContainer.appendChild(categoryBoxRow);
+    }
+
+    domElements.categoryBox.classList.remove("hidden");
 }
 
 function clearFortuneContent() {
