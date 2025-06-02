@@ -25,7 +25,7 @@
 
 .screen-container {
     background-image: url('../images/ui/background.webp');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
 
@@ -145,7 +145,7 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    width: 80%;
+    width: 70%;
     aspect-ratio: 1/1.348;
 
     position: relative;
@@ -156,7 +156,7 @@
     position: relative;
 
     align-self: flex-start;
-    margin-top: 20%;
+    margin-top: 15%;
     margin-right: 1%;
 }
 
