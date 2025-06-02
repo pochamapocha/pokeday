@@ -89,6 +89,8 @@ function generate() {
             domElements.level.textContent = `${result.level}`;
             domElements.pokemonName.innerHTML = result.pokemon.name;
 
+            // 移除旧的状态 class
+            domElements.level.classList.remove("fortune-good", "fortune-bad");
             domElements.level.classList.add(
                 GOOD_FORTUNE_LEVELS.includes(result.level) ? "fortune-good" : "fortune-bad"
             );
@@ -104,6 +106,8 @@ function generate() {
 
                 const categoryFortuneLevelText = document.createElement("div");
                 categoryFortuneLevelText.className = "category-fortune-level-text";
+                // 移除旧的状态 class
+                categoryFortuneLevelText.classList.remove("fortune-good", "fortune-bad");
                 categoryFortuneLevelText.classList.add(
                     GOOD_FORTUNE_LEVELS.includes(advice.level) ? "fortune-good" : "fortune-bad"
                 );
