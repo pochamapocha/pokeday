@@ -151,7 +151,7 @@ export function generatePokemonMoveList(pokemonId, hashValue) {
       const moveId = moveIds[categoryHash];
       const zhName = POKEMON_MOVES[moveId]?.zh;
 
-      result[category] = zhName || null;
+      result[category] = zhName || '未知技能';
     })
 
     return result;
