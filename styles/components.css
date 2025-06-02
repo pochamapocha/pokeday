@@ -107,7 +107,7 @@
 }
 
 .button-generate {
-    background-image: url('../images/ui/button-pokeday-default.png');
+    background-image: url('../images/ui/button-pokeday-default.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -125,15 +125,15 @@
 }
 
 .button-generate:hover {
-    background-image: url('../images/ui/button-pokeday-hover.png');
+    background-image: url('../images/ui/button-pokeday-hover.webp');
 }
 
 .button-generate:active {
-    background-image: url('../images/ui/button-pokeday-press.png');
+    background-image: url('../images/ui/button-pokeday-press.webp');
 }
 
 .button-setting {
-    background-image: url('../images/ui/button-setting.png');
+    background-image: url('../images/ui/button-setting.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -164,7 +164,7 @@
 }
 
 .modal-content {
-    background-image: url('../images/ui/modal-background.png');
+    background-image: url('../images/ui/modal-background.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
