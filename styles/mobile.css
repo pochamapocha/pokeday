@@ -1,6 +1,29 @@
 /* styles/mobile.css */
 @media (max-width: 768px) {
-    .page-wrapper {
-        width: 100vw;
+    .pokemon-name-text {
+    font-size: 1.2rem;
+    }
+
+    .fortune-level-text {
+    font-size: 2.5rem;
+    }
+
+    .category-advice-title-text,
+    .category-advice-content-text,
+    .pokemon-move-text {
+    font-size: 0.9rem;
+    }
+
+    .button-generate {
+    height: 6vh;
+    }
+
+    .button-setting {
+    height: 4vh;
+    }
+
+    .modal-content {
+    width: 90vw;
+    padding: 1.5vh;
     }
 }

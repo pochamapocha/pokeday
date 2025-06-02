@@ -113,7 +113,7 @@ function renderFortuneResult(result) {
         domElements.pokemonImg.src = 'images/piplup.webp'; // 默认图片
     };
     domElements.pokemonImg.src = result.pokemon.image;
-    
+
     domElements.level.textContent = `${result.level}`;
     domElements.pokemonName.innerHTML = result.pokemon.name;
 
@@ -204,20 +204,20 @@ function hideModal() {
     domElements.modal.classList.add("hidden");
 }
 
-/** web页面显示的时候处理用的，不好看，后面再处理吧 */
-function updateScale() {
-  const container = document.querySelector('.screen-container');
-  const content = document.querySelector('.content-layer');
-  const containerWidth = container.offsetWidth;
+// /** web页面显示的时候处理用的，不好看，后面再处理吧 */
+// function updateScale() {
+//   const container = document.querySelector('.screen-container');
+//   const content = document.querySelector('.content-layer');
+//   const containerWidth = container.offsetWidth;
 
-  // 设计宽度为 713.94px
-  const scale = containerWidth / 713.94;
-  content.style.setProperty('--scale-factor', scale);
-}
+//   // 设计宽度为 713.94px
+//   const scale = containerWidth / 713.94;
+//   content.style.setProperty('--scale-factor', scale);
+// }
 
 
 window.addEventListener('load', () => {
-    updateScale(); // 初始 & 每次窗口变化时更新缩放
+    // updateScale(); // 初始 & 每次窗口变化时更新缩放
 
     // 所有资源加载后移除loading遮罩
     document.fonts.ready.then(() => {
@@ -229,4 +229,4 @@ window.addEventListener('load', () => {
 });
 
 
-window.addEventListener('resize', updateScale);
+// window.addEventListener('resize', updateScale);
