@@ -25,7 +25,7 @@
 
 .screen-container {
     background-image: url('../images/ui/background.webp');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 
