@@ -19,58 +19,62 @@
   </div>
 
   <div class="banner"></div>
+
   <div class="page-wrapper">
     <div class="screen-container">
+      <div id="main-content" style="display: none;">
 
-      <div class="setting-box">
-        <button id="setting-btn" class="button-setting"></button>
+        <div class="setting-box">
+          <button id="setting-btn" class="button-setting"></button>
+        </div>
+
+        <div class="content-layer">
+          <div class="pokemon-image-box">
+            <img id="pokemon-img" class="pokemon-img" alt="">
+          </div>
+      
+          <div class="box-row">
+            <div class="welcome-box">
+              <p class="welcome-text" id="username-show"></p>
+            </div>
+            <div class="pokemon-name-box">
+              <div id="pokemon-name" class="pokemon-name-text"></div>
+            </div>
+          </div>
+
+
+          <div class="box-row">
+            <div class="fortune-level-box">
+              <div id="fortune-level" class="fortune-level-text"></div>
+            </div>
+
+            <div class="button-generate-box">
+              <button id="generate-btn" class="button-generate"></button>
+            </div>
+          </div>
+
+          <div id="category-box" class="category-box hidden">
+            <div id="category-advice-container" class="category-box-content">
+
+                <!-- <div class="category-box-row">
+                  <div class="category-fortune-level">
+                    <div class="category-fortune-level-text">中吉</div>
+                  </div>
+                  <div class="category-advice-main">
+                    <div class="category-advice-title-text">工作</div>
+                    <div class="category-advice-content-text">xxxxxxxxxxxxxxxx</div>
+                  </div>
+                  <div class="pokemon-move">
+                    <div class="pokemon-move-text">火花</div>
+                  </div>
+                </div> -->
+
+            </div>
+            
+          </div>
+        </div> <!-- content-layer -->
+
       </div>
-
-      <div class="content-layer">
-        <div class="pokemon-image-box">
-          <img id="pokemon-img" class="pokemon-img" alt="">
-        </div>
-    
-        <div class="box-row">
-          <div class="welcome-box">
-            <p class="welcome-text" id="username-show"></p>
-          </div>
-          <div class="pokemon-name-box">
-            <div id="pokemon-name" class="pokemon-name-text"></div>
-          </div>
-        </div>
-
-
-        <div class="box-row">
-          <div class="fortune-level-box">
-            <div id="fortune-level" class="fortune-level-text"></div>
-          </div>
-
-          <div class="button-generate-box">
-            <button id="generate-btn" class="button-generate"></button>
-          </div>
-        </div>
-
-        <div id="category-box" class="category-box hidden">
-          <div id="category-advice-container" class="category-box-content">
-
-              <!-- <div class="category-box-row">
-                <div class="category-fortune-level">
-                  <div class="category-fortune-level-text">中吉</div>
-                </div>
-                <div class="category-advice-main">
-                  <div class="category-advice-title-text">工作</div>
-                  <div class="category-advice-content-text">xxxxxxxxxxxxxxxx</div>
-                </div>
-                <div class="pokemon-move">
-                  <div class="pokemon-move-text">火花</div>
-                </div>
-              </div> -->
-
-          </div>
-          
-        </div>
-      </div> <!-- content-layer -->
     </div> <!-- screen-contaner -->
   </div> <!-- page-wrapper -->
 

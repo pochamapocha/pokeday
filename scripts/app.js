@@ -2,6 +2,7 @@ import { getDailyFortune } from "./core/fortune-core.js";
 import { GOOD_FORTUNE_LEVELS, BAD_FORTUNE_LEVELS } from "./config/fortune-levels.js";
 
 const domElements = {
+    mainContent: document.getElementById("main-content"),
     loadingScreen: document.getElementById("initial-loading"),
     editUserBtn: document.getElementById("setting-btn"),
 
@@ -77,6 +78,7 @@ function generate() {
     clearFortuneContent();
 
     domElements.loadingScreen.classList.remove("hidden");
+    domElements.mainContent.style.display = "none";
 
     showUsername();
 
@@ -161,6 +163,7 @@ function generate() {
 
         domElements.loadingScreen.classList.add("hidden"); // 结束遮罩
         domElements.categoryBox.classList.remove("hidden");
+        domElements.mainContent.style.display = "block";
 
         // 恢复按钮状态
         domElements.generateBtn.disabled = false;
@@ -220,7 +223,7 @@ window.addEventListener('load', () => {
     // 所有资源加载后移除loading遮罩
     if (domElements.loadingScreen) {
         domElements.loadingScreen.classList.add("hidden");
-        // domElements.loadingScreen.style.display = "none";
+        domElements.mainContent.style.display = "block";
     }
 });
 

@@ -3,7 +3,7 @@
 .initial-loading {
     position: fixed;
     z-index: 999;
-    background-color: #647e69;
+    background: transparent;
     width: 100vw;
     height: 100vh;
     top: 0;
