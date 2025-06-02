@@ -29,8 +29,6 @@
     color: rgb(114, 83, 46);
 }
 
-
-
 .pokemon-name-text {
     display: flex;
     justify-content: center;   /* 水平居中 */
@@ -96,7 +94,8 @@
     margin-top: 0.5vh;
 
     font-family: "Muyao", "Noto Sans SC", sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    letter-spacing: -0.2em;
 }
 
 .fortune-good {

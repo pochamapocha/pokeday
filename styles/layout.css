@@ -45,6 +45,15 @@
     padding-left: 4.5%;
 }
 
+.banner {
+    background-image: url("../images/ui/banner.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    aspect-ratio: 5/1; 
+}
+
 .pokemon-image-box {
     background-image: url('../images/ui/pokemon-pic-background.png');
     background-size: contain;
@@ -61,7 +70,7 @@
 
 .setting-box {
     position: absolute;
-    top: 5px;
+    top: 0;
     right: 20px;
     z-index: 9999;
 }
