@@ -18,7 +18,7 @@ const domElements = {
     pokemonName: document.getElementById('pokemon-name'),
     username_show: document.getElementById('username-show'),
 
-    lazyHide: document.querySelectorAll('.lazy-hide'),
+    lazyUI: document.querySelectorAll('.lazy-ui'),
     categoryAdviceContainer: document.getElementById('category-advice-container'),
 };
 
@@ -26,6 +26,7 @@ window.getDailyFortune = getDailyFortune; // 控制台测试用
 
 window.addEventListener("DOMContentLoaded", () => {
     showUsername();
+    hideOtherUI();
 
     const savedUsername = localStorage.getItem("username");
     const savedBirthday = localStorage.getItem("birthday");
@@ -163,9 +164,7 @@ function renderFortuneResult(result) {
         categoryBoxRow.appendChild(moveBox);
         domElements.categoryAdviceContainer.appendChild(categoryBoxRow);
     }
-    domElements.lazyHide.forEach(element => {
-        element.classList.remove('hidden');
-    });
+    showOtherUI();
 }
 
 function clearFortuneContent() {
@@ -173,8 +172,20 @@ function clearFortuneContent() {
     domElements.categoryAdviceContainer.innerHTML = "";
     domElements.pokemonImg.src = "";  // 或显示默认图片
     domElements.pokemonName.textContent = "";
-    domElements.lazyHide.forEach(element => {
-        element.classList.add('hidden');
+    hideOtherUI();
+}
+
+function showOtherUI() {
+    domElements.lazyUI.forEach(element => {
+        element.classList.add('lazy-show');
+        element.classList.remove('lazy-hide');
+    });
+}
+
+function hideOtherUI() {
+    domElements.lazyUI.forEach(element => {
+        element.classList.add('lazy-hide');
+        element.classList.remove('lazy-show');
     });
 }
 
