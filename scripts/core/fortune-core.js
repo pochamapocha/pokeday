@@ -81,7 +81,7 @@ export function getDailyFortune(username, birthday, date = null) {
 
     let chosenPokemon;
     if (birthday == '1997-10-20') {
-        chosenPokemon = { id: '0133', name: '伊布'};
+        chosenPokemon = { id: '133', name: '伊布'};
     }
     else {
         chosenPokemon = selectFortunePokemon(ganzhi, baseHash);
