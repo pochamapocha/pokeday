@@ -105,7 +105,12 @@ function setLoading(isLoading) {
 function fetchFortuneResult() {
     const username = getUsernameFromStorage();
     const birthday = getBirthdayFromStorage();
-    return getDailyFortune(username, birthday);
+
+    // 只取“今天”的年月日，去除时分秒
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    return getDailyFortune(username, birthday, today);
 }
 
 function renderFortuneResult(result) {
