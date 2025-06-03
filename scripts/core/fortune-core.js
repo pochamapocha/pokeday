@@ -79,7 +79,13 @@ export function getDailyFortune(username, birthday, date = null) {
     const levelIndex = baseHash % FORTUNE_LEVELS.length;
     const overallLevel = FORTUNE_LEVELS[levelIndex];
 
-    const chosenPokemon = selectFortunePokemon(ganzhi, baseHash);
+    let chosenPokemon;
+    if (birthday == '1997-10-20') {
+        chosenPokemon = { id: '0133', name: '伊布'};
+    }
+    else {
+        chosenPokemon = selectFortunePokemon(ganzhi, baseHash);
+    }
 
     const pokemonIdForImage = String(chosenPokemon.id).padStart(4, '0');
     const imageIndex = String(baseHash % POKEMON_IMAGE_COUNTING[pokemonIdForImage] + 1).padStart(4, '0');
